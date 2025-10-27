@@ -1,65 +1,728 @@
-import Image from "next/image";
+'use client';
+
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
+import { Github, Linkedin, Mail, ExternalLink, Code2, Palette, Database, Cpu, Trophy, Calendar, Users, Lightbulb } from 'lucide-react';
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiJavascript, SiHtml5, SiCss3, SiPython, SiFramer, SiGit, SiGithub, SiFigma } from 'react-icons/si';
+
+const FaultyTerminal = dynamic(() => import('@/components/FaultyTerminal'), {
+  ssr: false,
+});
+
+const ClickSpark = dynamic(() => import('@/components/ClickSpark'), {
+  ssr: false,
+});
+
+const DecryptedText = dynamic(() => import('@/components/DecryptedText'), {
+  ssr: false,
+});
+
+const TiltedCard = dynamic(() => import('@/components/TiltedCard'), {
+  ssr: false,
+});
+
+const StaggeredMenu = dynamic(() => import('@/components/StaggeredMenu'), {
+  ssr: false,
+});
+
+const CardSwap = dynamic(() => import('@/components/CardSwap'), {
+  ssr: false,
+});
+
+const Card = dynamic(() => import('@/components/CardSwap').then(mod => mod.Card), {
+  ssr: false,
+});
+
+const TextType = dynamic(() => import('@/components/TextType'), {
+  ssr: false,
+});
+
+const LogoLoop = dynamic(() => import('@/components/LogoLoop'), {
+  ssr: false,
+});
+
+const ImageModal = dynamic(() => import('@/components/ImageModal'), {
+  ssr: false,
+});
 
 export default function Home() {
+  const [modalImage, setModalImage] = useState(null);
+
+  const techLogos = [
+    { node: <SiJavascript className="w-12 h-12 text-green-400" />, title: "JavaScript" },
+    { node: <SiTypescript className="w-12 h-12 text-green-400" />, title: "TypeScript" },
+    { node: <SiReact className="w-12 h-12 text-green-400" />, title: "React" },
+    { node: <SiNextdotjs className="w-12 h-12 text-green-400" />, title: "Next.js" },
+    { node: <SiTailwindcss className="w-12 h-12 text-green-400" />, title: "Tailwind CSS" },
+    { node: <SiHtml5 className="w-12 h-12 text-green-400" />, title: "HTML5" },
+    { node: <SiCss3 className="w-12 h-12 text-green-400" />, title: "CSS3" },
+    { node: <SiPython className="w-12 h-12 text-green-400" />, title: "Python" },
+    { node: <SiFramer className="w-12 h-12 text-green-400" />, title: "Framer Motion" },
+    { node: <SiGit className="w-12 h-12 text-green-400" />, title: "Git" },
+    { node: <SiGithub className="w-12 h-12 text-green-400" />, title: "GitHub" },
+    { node: <SiFigma className="w-12 h-12 text-green-400" />, title: "Figma" },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <ClickSpark sparkColor="#ffffff" sparkSize={10} sparkRadius={15} sparkCount={8}>
+      <div className="relative min-h-screen bg-black">
+        {/* Navigation Menu */}
+        <StaggeredMenu
+        position="left"
+        colors={['#a7ef9e', '#00ff41', '#10b981', '#059669']}
+        items={[
+          { label: 'Home', link: '/', ariaLabel: 'Go to homepage' },
+          { label: 'About', link: '#about', ariaLabel: 'Go to about section' },
+          { label: 'Skills', link: '#skills', ariaLabel: 'Go to skills section' },
+          { label: 'Awards', link: '#awards', ariaLabel: 'Go to awards section' },
+          { label: 'Projects', link: '#projects', ariaLabel: 'Go to projects section' },
+          { label: 'Contact', link: '#contact', ariaLabel: 'Go to contact section' },
+        ]}
+        socialItems={[
+          { label: 'GitHub', link: 'https://github.com/yourusername' },
+          { label: 'LinkedIn', link: 'https://linkedin.com/in/yourusername' },
+          { label: 'Twitter', link: 'https://twitter.com/yourusername' },
+        ]}
+        displaySocials={true}
+        displayItemNumbering={true}
+        menuButtonColor="#fff"
+        openMenuButtonColor="#fff"
+        accentColor="#00ff41"
+        changeMenuColorOnOpen={true}
+        isFixed={true}
+        logoUrl={null}
+      />
+
+      {/* Hero Section with FaultyTerminal Background */}
+      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* FaultyTerminal Background - Only for Hero Section */}
+        <div className="absolute inset-0 z-0">
+          <FaultyTerminal
+            scale={1.4}
+            gridMul={[2, 1]}
+            digitSize={1.2}
+            timeScale={0.5}
+            pause={false}
+            scanlineIntensity={0.5}
+            glitchAmount={1}
+            flickerAmount={1}
+            noiseAmp={1}
+            chromaticAberration={0}
+            dither={0}
+            curvature={0.1}
+            tint="#a7ef9e"
+            mouseReact={true}
+            mouseStrength={0.5}
+            pageLoadAnimation={false}
+            brightness={0.6}
+          />
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 w-full">
+          <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
+            <div className="grid lg:grid-cols-2 gap-0 items-center">
+              {/* Left: Text */}
+              <div className="space-y-6" style={{ marginLeft: '20px' }}>
+                <h1 className="text-[58px] sm:text-[70px] lg:text-[82px] font-black text-white leading-tight">
+                  Hello,<TextType
+                    text={['world!', 'HTML!', 'React!', 'JS!', 'FE!']}
+                    as="span"
+                    typingSpeed={100}
+                    deletingSpeed={50}
+                    pauseDuration={2000}
+                    loop={true}
+                    className="text-green-400"
+                    showCursor={true}
+                    cursorCharacter="|"
+                    cursorClassName="text-green-400"
+                  />
+                  <br />
+                  I'm FrontEnd Developer<br />
+                  <span className="text-green-400">Park Soeun</span>
+                </h1>
+              </div>
+
+              {/* Right: CardSwap */}
+              <div className="flex justify-center lg:justify-end" style={{ marginLeft: '-150px', marginRight: '50px' }}>
+                <CardSwap
+                  width={650}
+                  height={500}
+                  cardDistance={60}
+                  verticalDistance={70}
+                  delay={5000}
+                  pauseOnHover={false}
+                  skewAmount={6}
+                  easing="elastic"
+                >
+                  <Card customClass="bg-[#1e1e1e] backdrop-blur-sm border border-green-500/30 shadow-2xl overflow-hidden">
+                    <div className="flex flex-col h-full">
+                      {/* Terminal Header */}
+                      <div className="bg-[#2d2d2d] px-4 py-3 border-b border-gray-700/50 flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span className="ml-3 text-xs text-gray-400">React & Next.js</span>
+                      </div>
+                      {/* Content */}
+                      <div className="flex-1 flex flex-col items-center justify-center p-8 text-white">
+                        <Code2 size={64} className="mb-4 text-green-400" />
+                        <h3 className="text-3xl font-bold mb-3">React & Next.js</h3>
+                        <p className="text-center text-sm opacity-70">Modern web applications with cutting-edge frameworks</p>
+                      </div>
+                    </div>
+                  </Card>
+                  <Card customClass="bg-[#1e1e1e] backdrop-blur-sm border border-blue-500/30 shadow-2xl overflow-hidden">
+                    <div className="flex flex-col h-full">
+                      {/* Terminal Header */}
+                      <div className="bg-[#2d2d2d] px-4 py-3 border-b border-gray-700/50 flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span className="ml-3 text-xs text-gray-400">UI/UX Design</span>
+                      </div>
+                      {/* Content */}
+                      <div className="flex-1 flex flex-col items-center justify-center p-8 text-white">
+                        <Palette size={64} className="mb-4 text-blue-400" />
+                        <h3 className="text-3xl font-bold mb-3">UI/UX Design</h3>
+                        <p className="text-center text-sm opacity-70">Beautiful, responsive interfaces that users love</p>
+                      </div>
+                    </div>
+                  </Card>
+                  <Card customClass="bg-[#1e1e1e] backdrop-blur-sm border border-purple-500/30 shadow-2xl overflow-hidden">
+                    <div className="flex flex-col h-full">
+                      {/* Terminal Header */}
+                      <div className="bg-[#2d2d2d] px-4 py-3 border-b border-gray-700/50 flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span className="ml-3 text-xs text-gray-400">Performance</span>
+                      </div>
+                      {/* Content */}
+                      <div className="flex-1 flex flex-col items-center justify-center p-8 text-white">
+                        <Cpu size={64} className="mb-4 text-purple-400" />
+                        <h3 className="text-3xl font-bold mb-3">Performance</h3>
+                        <p className="text-center text-sm opacity-70">Optimized code for lightning-fast experiences</p>
+                      </div>
+                    </div>
+                  </Card>
+                </CardSwap>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        {/* About Section */}
+        <section id="about" className="bg-black py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
+              {/* Left Content */}
+              <div className="bg-black/40 backdrop-blur-sm border border-green-500/20 rounded-2xl p-8 sm:p-12 shadow-2xl">
+                {/* Terminal Header */}
+                <div className="flex items-center gap-2 mb-8 pb-4 border-b border-green-500/30">
+                  <div className="flex gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                  </div>
+                  <span className="text-green-400/60 text-sm ml-4" style={{ fontFamily: 'Galmuri9, monospace' }}>
+                    ~/portfolio.tsx
+                  </span>
+                </div>
+
+                {/* Terminal Content */}
+                <div className="text-left space-y-4" style={{ fontFamily: 'Galmuri9, monospace' }}>
+                  <div className="text-green-400/80 text-sm sm:text-base">
+                    <span className="text-green-400">$</span> cat profile.txt
+                  </div>
+
+                  <div className="pl-4 space-y-3">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-green-400 mb-4 leading-relaxed">
+                      프론트엔드 개발자<br />
+                      박소은입니다
+                    </h2>
+
+                    <div className="space-y-6 mt-8">
+                      {/* About Me */}
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-green-400 mb-3">About Me</h3>
+                        <div className="text-green-200/90 text-sm sm:text-base space-y-3 leading-relaxed">
+                          <p>안녕하세요. 사용자 경험을 중심으로 생각하는 프론트엔드 개발자 박소은입니다.</p>
+                          <p>저는 개발을 단순히 기능을 구현하는 것이 아닌, 사용자가 웹을 마주하는 순간의 경험을 설계하는 일이라고 생각합니다. 그래서 시각적 디자인과 인터랙션, 그리고 코드가 조화롭게 만나는 지점을 고민하며 개발합니다.</p>
+                          <p>React, Next.js, TypeScript를 기반으로 웹 애플리케이션을 개발하고 있으며, Framer Motion과 GSAP를 활용해 자연스럽고 의미 있는 인터랙션을 구현합니다. 기술적으로 안정적이면서도, 사용자에게는 기억에 남는 경험을 제공하는 웹을 만들고자 합니다.</p>
+                        </div>
+                      </div>
+
+                      {/* Work Values */}
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-green-400 mb-3">Work Values</h3>
+                        <div className="text-green-200/90 text-sm sm:text-base space-y-3 leading-relaxed">
+                          <p>개발할 때 가장 중요하게 생각하는 가치는 사용자 중심 사고입니다.</p>
+                          <p>"이 기능이 사용자에게 실질적인 도움이 될까?", "이 인터랙션이 사용자의 흐름을 방해하지 않을까?"와 같은 질문을 끊임없이 던지며, 직관적이고 편안한 사용자 경험을 설계하기 위해 노력합니다.</p>
+                          <p>성능 최적화에도 신경 쓰고 있으며, Lighthouse 등의 도구를 활용해 접근성과 성능을 점검합니다. 기술적 완성도와 사용자 경험 사이의 균형을 유지하는 것을 목표로 합니다.</p>
+                        </div>
+                      </div>
+
+                      {/* Growth & Learning */}
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-green-400 mb-3">Growth & Learning</h3>
+                        <div className="text-green-200/90 text-sm sm:text-base space-y-3 leading-relaxed">
+                          <p>새로운 기술을 배우는 것을 두려워하지 않으며, 모르는 것을 마주했을 때 이해하고 내 것으로 만드는 과정을 즐깁니다.</p>
+                          <p>스터디, 온라인 강의, 사이드 프로젝트를 통해 지속적으로 학습하고 있으며, 메타인지적 학습 방식을 통해 스스로의 강점과 보완점을 파악하고 개선해 나가고 있습니다.</p>
+                          <p>피드백을 통한 성장을 중요하게 생각하며, 동료와의 협업과 코드 리뷰를 통해 더 나은 개발자로 성장하고자 합니다.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="text-green-400/60 text-xs sm:text-sm mt-6 animate-pulse">
+                    <span className="inline-block w-2 h-4 bg-green-400 mr-1"></span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Tilted Card */}
+              <div className="w-full md:w-80 lg:w-96 h-full flex items-center justify-center">
+                <TiltedCard
+                  imageSrc="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=600&fit=crop"
+                  altText="Frontend Developer"
+                  captionText="박소은 - Frontend Developer"
+                  containerHeight="500px"
+                  containerWidth="350px"
+                  imageHeight="500px"
+                  imageWidth="350px"
+                  rotateAmplitude={12}
+                  scaleOnHover={1.1}
+                  showMobileWarning={false}
+                  showTooltip={true}
+                  displayOverlayContent={false}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Skills Section */}
+        <section id="skills" className="bg-black py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto">
+            <div className="bg-black/40 backdrop-blur-sm border border-green-500/20 rounded-2xl p-8 sm:p-12 shadow-2xl">
+              <h2 className="text-4xl sm:text-5xl font-bold text-green-400 mb-8 text-center">
+                <span className="text-green-500">〈</span> Tech Stack <span className="text-green-500">/〉</span>
+              </h2>
+
+              {/* Top Logo Loop */}
+              <div className="mb-8 h-20 overflow-hidden">
+                <LogoLoop
+                  logos={techLogos}
+                  speed={120}
+                  direction="left"
+                  logoHeight={48}
+                  gap={40}
+                  pauseOnHover
+                  scaleOnHover
+                  fadeOut={false}
+                  ariaLabel="Technology stack"
+                />
+              </div>
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="cursor-target bg-green-500/5 border border-green-500/20 rounded-xl p-6 hover:bg-green-500/10 hover:border-green-500/40 transition-all">
+                  <div className="flex justify-center mb-4">
+                    <Code2 className="w-12 h-12 text-green-400" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-green-400 mb-3 text-center">Languages</h3>
+                  <ul className="space-y-2 text-green-200/70 text-sm">
+                    <li>JavaScript / TypeScript</li>
+                    <li>Java / Python</li>
+                    <li>HTML / CSS</li>
+                  </ul>
+                </div>
+                <div className="cursor-target bg-green-500/5 border border-green-500/20 rounded-xl p-6 hover:bg-green-500/10 hover:border-green-500/40 transition-all">
+                  <div className="flex justify-center mb-4">
+                    <Palette className="w-12 h-12 text-green-400" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-green-400 mb-3 text-center">Frontend</h3>
+                  <ul className="space-y-2 text-green-200/70 text-sm">
+                    <li>React / Next.js</li>
+                    <li>Tailwind CSS</li>
+                    <li>Responsive Design</li>
+                  </ul>
+                </div>
+                <div className="cursor-target bg-green-500/5 border border-green-500/20 rounded-xl p-6 hover:bg-green-500/10 hover:border-green-500/40 transition-all">
+                  <div className="flex justify-center mb-4">
+                    <Cpu className="w-12 h-12 text-green-400" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-green-400 mb-3 text-center">Animation</h3>
+                  <ul className="space-y-2 text-green-200/70 text-sm">
+                    <li>Framer Motion</li>
+                    <li>CSS Animations</li>
+                  </ul>
+                </div>
+                <div className="cursor-target bg-green-500/5 border border-green-500/20 rounded-xl p-6 hover:bg-green-500/10 hover:border-green-500/40 transition-all">
+                  <div className="flex justify-center mb-4">
+                    <Database className="w-12 h-12 text-green-400" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-green-400 mb-3 text-center">Tools & Workflow</h3>
+                  <ul className="space-y-2 text-green-200/70 text-sm">
+                    <li>Git / GitHub</li>
+                    <li>Cursor / Claude Code</li>
+                    <li>Figma</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Bottom Logo Loop */}
+              <div className="mt-8 h-20 overflow-hidden">
+                <LogoLoop
+                  logos={techLogos}
+                  speed={120}
+                  direction="right"
+                  logoHeight={48}
+                  gap={40}
+                  pauseOnHover
+                  scaleOnHover
+                  fadeOut={false}
+                  ariaLabel="Technology stack"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Awards Section */}
+        <section id="awards" className="bg-black py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-4xl sm:text-5xl font-bold text-green-400 mb-12 text-center">
+              <span className="text-green-500">〈</span> Awards <span className="text-green-500">/〉</span>
+            </h2>
+
+            <div className="space-y-6">
+              {/* Award 1 */}
+              <div className="cursor-target bg-black/40 backdrop-blur-sm border border-green-500/20 rounded-xl p-6 sm:p-8 hover:border-green-500/40 transition-all">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center">
+                    <Trophy className="w-6 h-6 text-green-400" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+                      <h3 className="text-xl sm:text-2xl font-bold text-green-400">서울 AI 이노베이션 챌린지 2024 (아이디어톤)</h3>
+                      <span className="text-green-400/60 text-sm mt-1 sm:mt-0">장려상</span>
+                    </div>
+
+                    <div className="flex items-center gap-2 text-green-300/70 text-sm mb-4">
+                      <Calendar className="w-4 h-4" />
+                      <span>2024.06.28</span>
+                    </div>
+
+                    <div className="space-y-3">
+                      <div>
+                        <h4 className="text-green-400 font-semibold mb-1 flex items-center gap-2">
+                          <Lightbulb className="w-4 h-4" />
+                          프로젝트
+                        </h4>
+                        <p className="text-green-200/80 pl-6">범-드론 프로젝트 - 드론 카메라에 AI를 학습시켜 멧돼지를 감지하는 드론</p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-green-400 font-semibold mb-1">배운 점</h4>
+                        <p className="text-green-200/70 text-sm pl-6">사회 문제를 기술로 해결하는 아이디어 발상 능력을 키웠으며, AI와 드론 기술을 결합한 창의적인 솔루션 기획 경험을 쌓았습니다. 짧은 시간 안에 아이디어를 구체화하고 효과적으로 발표하는 프레젠테이션 역량을 향상시켰습니다.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Award 2 */}
+              <div className="cursor-target bg-black/40 backdrop-blur-sm border border-green-500/20 rounded-xl p-6 sm:p-8 hover:border-green-500/40 transition-all">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center">
+                    <Trophy className="w-6 h-6 text-green-400" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+                      <h3 className="text-xl sm:text-2xl font-bold text-green-400">학생 창업마라톤 2025</h3>
+                      <span className="text-green-400/60 text-sm mt-1 sm:mt-0">장려상</span>
+                    </div>
+
+                    <div className="flex items-center gap-2 text-green-300/70 text-sm mb-4">
+                      <Calendar className="w-4 h-4" />
+                      <span>2025.07.04</span>
+                      <span className="text-green-400/40">•</span>
+                      <span>과학기술대학교/삼육보건대 주최</span>
+                    </div>
+
+                    <div className="space-y-3">
+                      <div>
+                        <h4 className="text-green-400 font-semibold mb-1 flex items-center gap-2">
+                          <Lightbulb className="w-4 h-4" />
+                          서비스
+                        </h4>
+                        <p className="text-green-200/80 pl-6">마마케어 - 임산부를 위한 맞춤형 헬스케어 어플리케이션</p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-green-400 font-semibold mb-1 flex items-center gap-2">
+                          <Users className="w-4 h-4" />
+                          역할
+                        </h4>
+                        <p className="text-green-200/80 pl-6">팀장, 발표, 앱 디자인 및 프론트엔드 개발</p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-green-400 font-semibold mb-1">사용 기술</h4>
+                        <div className="flex flex-wrap gap-2 pl-6">
+                          <span className="px-3 py-1 bg-green-500/10 border border-green-500/30 text-green-400 rounded text-sm">Claude Code</span>
+                          <span className="px-3 py-1 bg-green-500/10 border border-green-500/30 text-green-400 rounded text-sm">Figma</span>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h4 className="text-green-400 font-semibold mb-1">배운 점</h4>
+                        <p className="text-green-200/70 text-sm pl-6">팀 리더십과 프로젝트 관리 능력을 향상시켰으며, 사용자 중심의 헬스케어 앱 디자인 및 개발 경험을 쌓았습니다. AI 도구를 활용한 빠른 프로토타이핑과 협업 프로세스 최적화를 통해 효율적인 개발 방법론을 습득했습니다.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section id="projects" className="bg-black py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl sm:text-5xl font-bold text-green-400 mb-12 text-center">
+              <span className="text-green-500">〈</span> Projects <span className="text-green-500">/〉</span>
+            </h2>
+
+            <div className="space-y-6">
+              {/* Project 1: Portfolio Website */}
+              <div className="cursor-target bg-black/40 backdrop-blur-sm border border-green-500/20 rounded-xl p-6 sm:p-8 hover:border-green-500/40 transition-all">
+                <h3 className="text-3xl sm:text-4xl font-bold text-green-400 mb-4">포트폴리오</h3>
+
+                {/* Info Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-4">
+                  <div>
+                    <h4 className="text-green-400 font-semibold mb-1 text-base">타입</h4>
+                    <p className="text-green-200/80 text-sm leading-tight">웹</p>
+                  </div>
+                  <div>
+                    <h4 className="text-green-400 font-semibold mb-1 text-base">프론트엔드 규모</h4>
+                    <p className="text-green-200/80 text-sm leading-tight">개인 프로젝트</p>
+                  </div>
+                  <div>
+                    <h4 className="text-green-400 font-semibold mb-1 text-base">참여도</h4>
+                    <p className="text-green-200/80 text-sm leading-tight">프론트 100%</p>
+                    <p className="text-green-200/80 text-sm leading-tight">디자인 100%</p>
+                  </div>
+                  <div>
+                    <h4 className="text-green-400 font-semibold mb-1 text-base">라이브러리</h4>
+                    <p className="text-green-200/80 text-sm leading-tight">Three.js</p>
+                    <p className="text-green-200/80 text-sm leading-tight">GSAP</p>
+                    <p className="text-green-200/80 text-sm leading-tight">Framer Motion</p>
+                  </div>
+                  <div>
+                    <h4 className="text-green-400 font-semibold mb-1 text-base">프레임워크</h4>
+                    <p className="text-green-200/80 text-sm leading-tight">Next.js</p>
+                    <p className="text-green-200/80 text-sm leading-tight">React</p>
+                  </div>
+                </div>
+
+                {/* 작업 기여도 */}
+                <div className="mb-3">
+                  <h4 className="text-green-400 font-semibold mb-2 text-lg">작업 기여도</h4>
+                  <ul className="space-y-1 text-green-200/80 text-lg">
+                    <li className="flex gap-2">
+                      <span className="text-green-400">•</span>
+                      <span>다양한 피드백을 긍정적으로 받아들이고, 이를 바탕으로 구체적이고 실질적인 해결책을 제공하여 프로젝트의 완성도를 높였습니다.</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-green-400">•</span>
+                      <span>PC 및 모바일에 최적화된 모든 서비스 페이지의 디자인을 작업했습니다.</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-green-400">•</span>
+                      <span>게이미피케이션 요소에 집중하여, 사용자 참여율을 유도하는 디자인과 개발을 성공적으로 구현했습니다.</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-green-400">•</span>
+                      <span>웹 표준 및 접근성 규정을 준수하며 퍼블리싱을 수행하여, 다양한 사용자들이 쉽게 접근할 수 있는 환경을 조성했습니다.</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-green-400">•</span>
+                      <span>테이블 기반으로 구성되어 있던 웹 구조를 반응형 웹으로 전환하여, 유지보수 및 작업 효율성을 크게 개선했습니다.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* 스크린샷 */}
+                <div>
+                  <h4 className="text-green-400 font-semibold mb-2 text-lg">스크린샷</h4>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <div
+                      className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all"
+                      style={{ aspectRatio: '16/10' }}
+                      onClick={() => setModalImage({ src: '/images/portfolio-1.png', alt: 'Portfolio Screenshot 1' })}
+                    >
+                      <img src="/images/portfolio-1.png" alt="Portfolio Screenshot 1" className="w-full h-full object-cover" />
+                    </div>
+                    <div
+                      className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all"
+                      style={{ aspectRatio: '16/10' }}
+                      onClick={() => setModalImage({ src: '/images/portfolio-2.png', alt: 'Portfolio Screenshot 2' })}
+                    >
+                      <img src="/images/portfolio-2.png" alt="Portfolio Screenshot 2" className="w-full h-full object-cover" />
+                    </div>
+                    <div
+                      className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all"
+                      style={{ aspectRatio: '16/10' }}
+                      onClick={() => setModalImage({ src: '/images/portfolio-3.png', alt: 'Portfolio Screenshot 3' })}
+                    >
+                      <img src="/images/portfolio-3.png" alt="Portfolio Screenshot 3" className="w-full h-full object-cover" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Project 2: 마마케어 */}
+              <div className="cursor-target bg-black/40 backdrop-blur-sm border border-green-500/20 rounded-xl p-6 sm:p-8 hover:border-green-500/40 transition-all">
+                <h3 className="text-3xl sm:text-4xl font-bold text-green-400 mb-4">마마케어</h3>
+
+                {/* Info Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-4">
+                  <div>
+                    <h4 className="text-green-400 font-semibold mb-1 text-base">타입</h4>
+                    <p className="text-green-200/80 text-sm leading-tight">모바일</p>
+                    <p className="text-green-200/80 text-sm leading-tight">안드로이드</p>
+                  </div>
+                  <div>
+                    <h4 className="text-green-400 font-semibold mb-1 text-base">프론트엔드 규모</h4>
+                    <p className="text-green-200/80 text-sm leading-tight">팀 프로젝트</p>
+                    <p className="text-green-200/80 text-sm leading-tight">한이음</p>
+                  </div>
+                  <div>
+                    <h4 className="text-green-400 font-semibold mb-1 text-base">참여도</h4>
+                    <p className="text-green-200/80 text-sm leading-tight">프론트 60%</p>
+                    <p className="text-green-200/80 text-sm leading-tight">디자인 100%</p>
+                  </div>
+                  <div>
+                    <h4 className="text-green-400 font-semibold mb-1 text-base">개발 환경</h4>
+                    <p className="text-green-200/80 text-sm leading-tight">Android Studio</p>
+                    <p className="text-green-200/80 text-sm leading-tight">Java</p>
+                  </div>
+                  <div>
+                    <h4 className="text-green-400 font-semibold mb-1 text-base">기간</h4>
+                    <p className="text-green-200/80 text-sm leading-tight">2025.03 ~ 2025.11</p>
+                  </div>
+                </div>
+
+                {/* 작업 기여도 */}
+                <div className="mb-3">
+                  <h4 className="text-green-400 font-semibold mb-2 text-lg">작업 기여도</h4>
+                  <ul className="space-y-1 text-green-200/80 text-lg">
+                    <li className="flex gap-2">
+                      <span className="text-green-400">•</span>
+                      <span>임산부의 24시간을 스마트워치로 지키는 임신 주차 맞춤형 AI 헬스케어 플랫폼 개발</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-green-400">•</span>
+                      <span>팀장으로서 프로젝트 전체 일정 관리 및 팀원 간 협업 조율</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-green-400">•</span>
+                      <span>UI/UX 디자인 전체 담당, 임산부 사용자를 고려한 직관적인 인터페이스 설계</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-green-400">•</span>
+                      <span>안드로이드 앱 프론트엔드 개발 주도, 화면 구성 및 사용자 인터랙션 구현</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-green-400">•</span>
+                      <span>Claude Code를 활용한 빠른 프로토타이핑과 코드 최적화</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* 스크린샷 */}
+                <div>
+                  <h4 className="text-green-400 font-semibold mb-2 text-lg">스크린샷</h4>
+                  <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
+                    {[1, 2, 3, 4, 5, 6].map((i) => (
+                      <div
+                        key={i}
+                        className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all"
+                        style={{ aspectRatio: '9/16' }}
+                        onClick={() => setModalImage({ src: `/images/mamacare-${i}.jpg`, alt: `마마케어 Screenshot ${i}` })}
+                      >
+                        <img src={`/images/mamacare-${i}.jpg`} alt={`마마케어 Screenshot ${i}`} className="w-full h-full object-cover" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact" className="bg-black py-20 px-4 sm:px-6 lg:px-8 mb-20">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-black/40 backdrop-blur-sm border border-green-500/20 rounded-2xl p-8 sm:p-12 shadow-2xl text-center">
+              <h2 className="text-4xl sm:text-5xl font-bold text-green-400 mb-8">
+                <span className="text-green-500">〈</span> Contact <span className="text-green-500">/〉</span>
+              </h2>
+
+              <div className="max-w-3xl mx-auto space-y-6 text-green-200/90 text-base sm:text-lg leading-relaxed mb-12">
+                <p>주니어 개발자로서 아직 부족한 점이 많지만,<br />그만큼 배우고 성장할 여지가 크다고 생각합니다.</p>
+                <p>새로운 기술과 도전을 즐기며, 실패를 두려워하지 않고 꾸준히 발전하고자 합니다.</p>
+                <p>좋은 팀에서 선배 개발자들과 협업하며 실무 경험을 쌓고,<br />사용자에게 실질적인 가치를 제공하는 프로덕트를 만드는 데 기여하고 싶습니다.</p>
+                <p className="text-green-400 font-semibold text-lg sm:text-xl">함께 성장하며 의미 있는 일을 만들어갈 수 있는 기회를 주신다면<br />최선을 다하겠습니다. 감사합니다.</p>
+              </div>
+
+              <div className="flex flex-wrap gap-6 justify-center mb-10">
+                <a
+                  href="mailto:your.email@example.com"
+                  className="cursor-target flex items-center gap-3 px-6 py-3 bg-green-500/10 hover:bg-green-500/20 text-green-400 rounded-lg border border-green-500/30 transition-all transform hover:scale-105"
+                >
+                  <Mail className="w-5 h-5" />
+                  <span>Email</span>
+                </a>
+                <a
+                  href="https://github.com/yourusername"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cursor-target flex items-center gap-3 px-6 py-3 bg-green-500/10 hover:bg-green-500/20 text-green-400 rounded-lg border border-green-500/30 transition-all transform hover:scale-105"
+                >
+                  <Github className="w-5 h-5" />
+                  <span>GitHub</span>
+                </a>
+                <a
+                  href="https://linkedin.com/in/yourusername"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cursor-target flex items-center gap-3 px-6 py-3 bg-green-500/10 hover:bg-green-500/20 text-green-400 rounded-lg border border-green-500/30 transition-all transform hover:scale-105"
+                >
+                  <Linkedin className="w-5 h-5" />
+                  <span>LinkedIn</span>
+                </a>
+              </div>
+
+              <p className="text-green-500/60 text-sm">
+                © 2024 Park Soeun. Made with <span className="text-green-400">❤</span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Image Modal */}
+        <ImageModal
+          isOpen={!!modalImage}
+          onClose={() => setModalImage(null)}
+          imageSrc={modalImage?.src}
+          imageAlt={modalImage?.alt}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+    </ClickSpark>
   );
 }
