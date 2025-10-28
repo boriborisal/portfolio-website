@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import Image from 'next/image';
 import { X } from 'lucide-react';
 
 export default function ImageModal({ isOpen, onClose, imageSrc, imageAlt }) {
@@ -60,10 +61,13 @@ export default function ImageModal({ isOpen, onClose, imageSrc, imageAlt }) {
 
         {/* Image Container */}
         <div className="bg-black p-4 max-h-[80vh] overflow-auto">
-          <img
+          <Image
             src={imageSrc}
             alt={imageAlt}
+            width={1920}
+            height={1080}
             className="w-full h-auto object-contain"
+            quality={90}
           />
         </div>
       </div>

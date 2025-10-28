@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { Github, Linkedin, Mail, ExternalLink, Code2, Palette, Database, Cpu, Trophy, Calendar, Users, Lightbulb } from 'lucide-react';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiJavascript, SiHtml5, SiCss3, SiPython, SiFramer, SiGit, SiGithub, SiFigma } from 'react-icons/si';
 
@@ -67,6 +68,7 @@ export default function Home() {
     <ClickSpark sparkColor="#ffffff" sparkSize={10} sparkRadius={15} sparkCount={8}>
       <div className="relative min-h-screen bg-black">
         {/* Navigation Menu */}
+        {/* @ts-ignore */}
         <StaggeredMenu
         position="left"
         colors={['#a7ef9e', '#00ff41', '#10b981', '#059669']}
@@ -90,7 +92,7 @@ export default function Home() {
         accentColor="#00ff41"
         changeMenuColorOnOpen={true}
         isFixed={true}
-        logoUrl={null}
+        logoUrl={undefined}
       />
 
       {/* Hero Section with FaultyTerminal Background */}
@@ -561,25 +563,25 @@ export default function Home() {
                   <h4 className="text-green-400 font-semibold mb-2 text-lg">스크린샷</h4>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                     <div
-                      className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all"
+                      className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
                       style={{ aspectRatio: '16/10' }}
                       onClick={() => setModalImage({ src: '/images/portfolio-1.png', alt: 'Portfolio Screenshot 1' })}
                     >
-                      <img src="/images/portfolio-1.png" alt="Portfolio Screenshot 1" className="w-full h-full object-cover" />
+                      <Image src="/images/portfolio-1.png" alt="Portfolio Screenshot 1" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                     </div>
                     <div
-                      className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all"
+                      className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
                       style={{ aspectRatio: '16/10' }}
                       onClick={() => setModalImage({ src: '/images/portfolio-2.png', alt: 'Portfolio Screenshot 2' })}
                     >
-                      <img src="/images/portfolio-2.png" alt="Portfolio Screenshot 2" className="w-full h-full object-cover" />
+                      <Image src="/images/portfolio-2.png" alt="Portfolio Screenshot 2" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                     </div>
                     <div
-                      className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all"
+                      className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
                       style={{ aspectRatio: '16/10' }}
                       onClick={() => setModalImage({ src: '/images/portfolio-3.png', alt: 'Portfolio Screenshot 3' })}
                     >
-                      <img src="/images/portfolio-3.png" alt="Portfolio Screenshot 3" className="w-full h-full object-cover" />
+                      <Image src="/images/portfolio-3.png" alt="Portfolio Screenshot 3" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                     </div>
                   </div>
                 </div>
@@ -651,11 +653,11 @@ export default function Home() {
                     {[1, 2, 3, 4, 5, 6].map((i) => (
                       <div
                         key={i}
-                        className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all"
+                        className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
                         style={{ aspectRatio: '9/16' }}
                         onClick={() => setModalImage({ src: `/images/mamacare-${i}.jpg`, alt: `마마케어 Screenshot ${i}` })}
                       >
-                        <img src={`/images/mamacare-${i}.jpg`} alt={`마마케어 Screenshot ${i}`} className="w-full h-full object-cover" />
+                        <Image src={`/images/mamacare-${i}.jpg`} alt={`마마케어 Screenshot ${i}`} fill className="object-cover" sizes="(max-width: 768px) 50vw, 25vw" />
                       </div>
                     ))}
                   </div>

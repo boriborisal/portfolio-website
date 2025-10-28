@@ -8,7 +8,15 @@
       "Bash(dir \"C:\\Users\\ppakc\\Downloads\\*.png\" /b /o-d)",
       "Bash(ls:*)",
       "Bash(npm install:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(gh repo create:*)",
+      "Bash(winget install:*)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(npm run build:*)",
+      "WebFetch(domain:park-soeun-portfolio-website.vercel.app)"
     ],
     "deny": [],
     "ask": []
