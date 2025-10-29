@@ -3,9 +3,9 @@ import { motion, useMotionValue, useSpring } from 'motion/react';
 import './TiltedCard.css';
 
 const springValues = {
-  damping: 30,
-  stiffness: 100,
-  mass: 2
+  damping: 50,
+  stiffness: 80,
+  mass: 3
 };
 
 export default function TiltedCard({
@@ -32,9 +32,9 @@ export default function TiltedCard({
   const scale = useSpring(1, springValues);
   const opacity = useSpring(0);
   const rotateFigcaption = useSpring(0, {
-    stiffness: 350,
-    damping: 30,
-    mass: 1
+    stiffness: 200,
+    damping: 50,
+    mass: 2
   });
 
   const [lastY, setLastY] = useState(0);

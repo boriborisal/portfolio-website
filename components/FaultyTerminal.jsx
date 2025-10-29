@@ -233,6 +233,7 @@ export default function FaultyTerminal({
   dither = 0,
   curvature = 0.2,
   tint = '#ffffff',
+  backgroundColor = '#000000',
   mouseReact = true,
   mouseStrength = 0.2,
   dpr = Math.min(window.devicePixelRatio || 1, 2),
@@ -253,6 +254,7 @@ export default function FaultyTerminal({
   const timeOffsetRef = useRef(Math.random() * 100);
 
   const tintVec = useMemo(() => hexToRgb(tint), [tint]);
+  const bgColorVec = useMemo(() => hexToRgb(backgroundColor), [backgroundColor]);
 
   const ditherValue = useMemo(() => (typeof dither === 'boolean' ? (dither ? 1 : 0) : dither), [dither]);
 
@@ -272,7 +274,7 @@ export default function FaultyTerminal({
     const renderer = new Renderer({ dpr });
     rendererRef.current = renderer;
     const gl = renderer.gl;
-    gl.clearColor(0, 0, 0, 1);
+    gl.clearColor(bgColorVec[0], bgColorVec[1], bgColorVec[2], 1);
 
     const geometry = new Triangle(gl);
 
@@ -389,6 +391,7 @@ export default function FaultyTerminal({
     ditherValue,
     curvature,
     tintVec,
+    bgColorVec,
     mouseReact,
     mouseStrength,
     pageLoadAnimation,

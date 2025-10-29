@@ -129,7 +129,53 @@
 
   body {
     @apply text-foreground;
-    background-color: black !important;
     font-family: "Galmuri9", monospace !important;
+  }
+
+  /* Text selection style - Dark theme */
+  ::selection {
+    background-color: #000000;
+    color: #10b981;
+  }
+
+  ::-moz-selection {
+    background-color: #000000;
+    color: #10b981;
+  }
+
+  /* Text selection style - Light theme */
+  body.light ::selection {
+    background-color: #10b981;
+    color: #ffffff;
+  }
+
+  body.light ::-moz-selection {
+    background-color: #10b981;
+    color: #ffffff;
+  }
+
+  /* Light theme: all cards start with light gray text */
+  body.light .card h3,
+  body.light .card p,
+  body.light .card span {
+    color: #d1d5db !important;
+  }
+
+  /* Light theme: front card has dark text */
+  body.light .card[data-is-front="true"] h3,
+  body.light .card[data-is-front="true"] p,
+  body.light .card[data-is-front="true"] span {
+    color: #111827 !important;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }

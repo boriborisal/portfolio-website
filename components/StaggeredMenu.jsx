@@ -17,7 +17,9 @@ export const StaggeredMenu = ({
   changeMenuColorOnOpen = true,
   isFixed = false,
   onMenuOpen,
-  onMenuClose
+  onMenuClose,
+  theme = 'dark',
+  onThemeToggle
 }) => {
   const [open, setOpen] = useState(false);
   const openRef = useRef(false);
@@ -343,6 +345,52 @@ export const StaggeredMenu = ({
         })()}
       </div>
       <header className="staggered-menu-header" aria-label="Main navigation header">
+        {onThemeToggle && (
+          <button
+            className="sm-theme-toggle"
+            style={{
+              marginRight: '20px',
+              cursor: 'pointer',
+              padding: '4px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'none',
+              border: 'none'
+            }}
+            aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            onClick={onThemeToggle}
+            type="button"
+          >
+            <div style={{
+              position: 'relative',
+              width: '52px',
+              height: '28px',
+              backgroundColor: '#10b981',
+              borderRadius: '14px',
+              transition: 'background-color 0.3s ease',
+              display: 'flex',
+              alignItems: 'center',
+              padding: '2px'
+            }}>
+              <div style={{
+                position: 'absolute',
+                width: '24px',
+                height: '24px',
+                backgroundColor: '#ffffff',
+                borderRadius: '12px',
+                transition: 'transform 0.3s ease',
+                transform: theme === 'dark' ? 'translateX(0)' : 'translateX(24px)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '12px'
+              }}>
+                {theme === 'dark' ? '🌙' : '☀️'}
+              </div>
+            </div>
+          </button>
+        )}
         <button
           ref={toggleBtnRef}
           className="sm-toggle"

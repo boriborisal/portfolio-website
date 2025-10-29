@@ -36,6 +36,7 @@ const CardSwap = ({
   onCardClick,
   skewAmount = 6,
   easing = 'elastic',
+  theme = 'dark',
   children
 }) => {
   const config =
@@ -72,13 +73,28 @@ const CardSwap = ({
 
   useEffect(() => {
     const total = refs.length;
-    refs.forEach((r, i) => placeNow(r.current, makeSlot(i, cardDistance, verticalDistance, total), skewAmount));
+    refs.forEach((r, i) => {
+      placeNow(r.current, makeSlot(i, cardDistance, verticalDistance, total), skewAmount);
+      // Set data attribute for front card
+      if (r.current) {
+        r.current.setAttribute('data-is-front', i === 0 ? 'true' : 'false');
+
+        // Set text color for light theme
+        if (theme === 'light') {
+          const textElements = r.current.querySelectorAll('h3, p, span');
+          textElements.forEach(el => {
+            gsap.set(el, { color: i === 0 ? '#111827' : '#d1d5db' });
+          });
+        }
+      }
+    });
 
     const swap = () => {
       if (order.current.length < 2) return;
 
       const [front, ...rest] = order.current;
       const elFront = refs[front].current;
+      if (!elFront) return;
       const tl = gsap.timeline();
       tlRef.current = tl;
 
@@ -91,6 +107,7 @@ const CardSwap = ({
       tl.addLabel('promote', `-=${config.durDrop * config.promoteOverlap}`);
       rest.forEach((idx, i) => {
         const el = refs[idx].current;
+        if (!el) return;
         const slot = makeSlot(i, cardDistance, verticalDistance, refs.length);
         tl.set(el, { zIndex: slot.zIndex }, 'promote');
         tl.to(
@@ -104,6 +121,30 @@ const CardSwap = ({
           },
           `promote+=${i * 0.15}`
         );
+        // Update data-is-front attribute
+        if (i === 0) {
+          tl.call(() => {
+            el.setAttribute('data-is-front', 'true');
+            // Change text color to dark for front card in light theme
+            if (theme === 'light') {
+              const textElements = el.querySelectorAll('h3, p, span');
+              textElements.forEach(textEl => {
+                gsap.to(textEl, { color: '#111827', duration: 0.3 });
+              });
+            }
+          }, undefined, 'promote');
+        } else {
+          tl.call(() => {
+            el.setAttribute('data-is-front', 'false');
+            // Change text color to gray for non-front cards in light theme
+            if (theme === 'light') {
+              const textElements = el.querySelectorAll('h3, p, span');
+              textElements.forEach(textEl => {
+                gsap.to(textEl, { color: '#d1d5db', duration: 0.3 });
+              });
+            }
+          }, undefined, 'promote');
+        }
       });
 
       const backSlot = makeSlot(refs.length - 1, cardDistance, verticalDistance, refs.length);
@@ -126,6 +167,16 @@ const CardSwap = ({
         },
         'return'
       );
+      tl.call(() => {
+        elFront.setAttribute('data-is-front', 'false');
+        // Change text color to gray when going to back in light theme
+        if (theme === 'light') {
+          const textElements = elFront.querySelectorAll('h3, p, span');
+          textElements.forEach(textEl => {
+            gsap.to(textEl, { color: '#d1d5db', duration: 0.3 });
+          });
+        }
+      }, undefined, 'return');
 
       tl.call(() => {
         order.current = [...rest, front];
@@ -155,7 +206,7 @@ const CardSwap = ({
     }
     return () => clearInterval(intervalRef.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing]);
+  }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing, theme]);
 
   const rendered = childArr.map((child, i) =>
     isValidElement(child)

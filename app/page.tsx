@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { Github, Linkedin, Mail, ExternalLink, Code2, Palette, Database, Cpu, Trophy, Calendar, Users, Lightbulb } from 'lucide-react';
@@ -10,7 +10,19 @@ const FaultyTerminal = dynamic(() => import('@/components/FaultyTerminal'), {
   ssr: false,
 });
 
+const PixelBlast = dynamic(() => import('@/components/PixelBlast'), {
+  ssr: false,
+});
+
+const LetterGlitch = dynamic(() => import('@/components/LetterGlitch'), {
+  ssr: false,
+});
+
 const ClickSpark = dynamic(() => import('@/components/ClickSpark'), {
+  ssr: false,
+});
+
+const CursorFollow = dynamic(() => import('@/components/CursorFollow'), {
   ssr: false,
 });
 
@@ -19,6 +31,14 @@ const DecryptedText = dynamic(() => import('@/components/DecryptedText'), {
 });
 
 const TiltedCard = dynamic(() => import('@/components/TiltedCard'), {
+  ssr: false,
+});
+
+const ChromaGrid = dynamic(() => import('@/components/ChromaGrid'), {
+  ssr: false,
+});
+
+const AboutSection = dynamic(() => import('@/components/AboutSection'), {
   ssr: false,
 });
 
@@ -46,8 +66,26 @@ const ImageModal = dynamic(() => import('@/components/ImageModal'), {
   ssr: false,
 });
 
+const ScrollStack = dynamic(() => import('@/components/ScrollStack'), {
+  ssr: false,
+});
+
+const ScrollStackItem = dynamic(() => import('@/components/ScrollStack').then(mod => mod.ScrollStackItem), {
+  ssr: false,
+});
+
 export default function Home() {
   const [modalImage, setModalImage] = useState(null);
+  const [theme, setTheme] = useState('dark'); // 'dark' or 'light'
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
+  useEffect(() => {
+    document.body.style.backgroundColor = theme === 'dark' ? 'black' : 'white';
+    document.body.className = theme;
+  }, [theme]);
 
   const techLogos = [
     { node: <SiJavascript className="w-12 h-12 text-green-400" />, title: "JavaScript" },
@@ -65,8 +103,10 @@ export default function Home() {
   ];
 
   return (
-    <ClickSpark sparkColor="#ffffff" sparkSize={10} sparkRadius={15} sparkCount={8}>
-      <div className="relative min-h-screen bg-black">
+    <>
+      <CursorFollow />
+      <ClickSpark sparkColor="#ffffff" sparkSize={10} sparkRadius={15} sparkCount={8}>
+        <div className={`relative min-h-screen ${theme === 'dark' ? 'bg-black' : 'bg-white'}`}>
         {/* Navigation Menu */}
         {/* @ts-ignore */}
         <StaggeredMenu
@@ -93,31 +133,46 @@ export default function Home() {
         changeMenuColorOnOpen={true}
         isFixed={true}
         logoUrl={undefined}
+        theme={theme}
+        onThemeToggle={toggleTheme}
       />
 
-      {/* Hero Section with FaultyTerminal Background */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* FaultyTerminal Background - Only for Hero Section */}
-        <div className="absolute inset-0 z-0">
-          <FaultyTerminal
-            scale={1.4}
-            gridMul={[2, 1]}
-            digitSize={1.2}
-            timeScale={0.5}
-            pause={false}
-            scanlineIntensity={0.5}
-            glitchAmount={1}
-            flickerAmount={1}
-            noiseAmp={1}
-            chromaticAberration={0}
-            dither={0}
-            curvature={0.1}
-            tint="#a7ef9e"
-            mouseReact={true}
-            mouseStrength={0.5}
-            pageLoadAnimation={false}
-            brightness={0.6}
-          />
+      {/* Hero Section with Background */}
+      <section className={`relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden ${theme === 'dark' ? 'bg-black' : 'bg-white'}`}>
+        {/* Background - FaultyTerminal for dark mode, LetterGlitch for light mode */}
+        <div className="absolute inset-0 z-[1]">
+          {theme === 'dark' ? (
+            <FaultyTerminal
+              scale={1.4}
+              gridMul={[2, 1]}
+              digitSize={1.2}
+              timeScale={0.5}
+              pause={false}
+              scanlineIntensity={0.5}
+              glitchAmount={1}
+              flickerAmount={1}
+              noiseAmp={1}
+              chromaticAberration={0}
+              dither={0}
+              curvature={0.1}
+              tint="#a7ef9e"
+              backgroundColor="#000000"
+              mouseReact={true}
+              mouseStrength={0.5}
+              pageLoadAnimation={false}
+              brightness={0.6}
+            />
+          ) : (
+            <LetterGlitch
+              glitchSpeed={50}
+              centerVignette={true}
+              outerVignette={false}
+              smooth={true}
+              backgroundColor="#ffffff"
+              vignetteColor="255,255,255"
+              vignettePosition="40% 50%"
+            />
+          )}
         </div>
 
         {/* Hero Content */}
@@ -126,7 +181,7 @@ export default function Home() {
             <div className="grid lg:grid-cols-2 gap-0 items-center">
               {/* Left: Text */}
               <div className="space-y-6" style={{ marginLeft: '20px' }}>
-                <h1 className="text-[58px] sm:text-[70px] lg:text-[82px] font-black text-white leading-tight">
+                <h1 className={`text-[58px] sm:text-[70px] lg:text-[82px] font-black ${theme === 'dark' ? 'text-white' : 'text-gray-900'} leading-tight`}>
                   Hello,<TextType
                     text={['world!', 'HTML!', 'React!', 'JS!', 'FE!']}
                     as="span"
@@ -156,55 +211,56 @@ export default function Home() {
                   pauseOnHover={false}
                   skewAmount={6}
                   easing="elastic"
+                  theme={theme}
                 >
-                  <Card customClass="bg-[#1e1e1e] backdrop-blur-sm border border-green-500/30 shadow-2xl overflow-hidden">
-                    <div className="flex flex-col h-full">
+                  <Card customClass={`${theme === 'dark' ? 'bg-[#1e1e1e]' : 'bg-white'} backdrop-blur-sm border ${theme === 'dark' ? 'border-green-500/30' : 'border-green-500/30'} shadow-2xl overflow-hidden`}>
+                    <div className={`flex flex-col h-full ${theme === 'dark' ? 'bg-[#1e1e1e]' : 'bg-white'}`}>
                       {/* Terminal Header */}
-                      <div className="bg-[#2d2d2d] px-4 py-3 border-b border-gray-700/50 flex items-center gap-2">
+                      <div className={`${theme === 'dark' ? 'bg-[#2d2d2d] border-gray-700/50' : 'bg-gray-100 border-gray-200'} px-4 py-3 border-b flex items-center gap-2`}>
                         <div className="w-3 h-3 rounded-full bg-red-500"></div>
                         <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                         <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                        <span className="ml-3 text-xs text-gray-400">React & Next.js</span>
+                        <span className={`ml-3 text-xs ${theme === 'dark' ? 'text-gray-400' : ''}`}>React & Next.js</span>
                       </div>
                       {/* Content */}
-                      <div className="flex-1 flex flex-col items-center justify-center p-8 text-white">
+                      <div className={`flex-1 flex flex-col items-center justify-center p-8 ${theme === 'dark' ? 'bg-[#1e1e1e] text-white' : 'bg-white'}`}>
                         <Code2 size={64} className="mb-4 text-green-400" />
                         <h3 className="text-3xl font-bold mb-3">React & Next.js</h3>
-                        <p className="text-center text-sm opacity-70">Modern web applications with cutting-edge frameworks</p>
+                        <p className={`text-center text-sm ${theme === 'dark' ? 'opacity-70' : ''}`}>Modern web applications with cutting-edge frameworks</p>
                       </div>
                     </div>
                   </Card>
-                  <Card customClass="bg-[#1e1e1e] backdrop-blur-sm border border-blue-500/30 shadow-2xl overflow-hidden">
-                    <div className="flex flex-col h-full">
+                  <Card customClass={`${theme === 'dark' ? 'bg-[#1e1e1e]' : 'bg-white'} backdrop-blur-sm border ${theme === 'dark' ? 'border-blue-500/30' : 'border-green-500/30'} shadow-2xl overflow-hidden`}>
+                    <div className={`flex flex-col h-full ${theme === 'dark' ? 'bg-[#1e1e1e]' : 'bg-white'}`}>
                       {/* Terminal Header */}
-                      <div className="bg-[#2d2d2d] px-4 py-3 border-b border-gray-700/50 flex items-center gap-2">
+                      <div className={`${theme === 'dark' ? 'bg-[#2d2d2d] border-gray-700/50' : 'bg-gray-100 border-gray-200'} px-4 py-3 border-b flex items-center gap-2`}>
                         <div className="w-3 h-3 rounded-full bg-red-500"></div>
                         <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                         <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                        <span className="ml-3 text-xs text-gray-400">UI/UX Design</span>
+                        <span className={`ml-3 text-xs ${theme === 'dark' ? 'text-gray-400' : ''}`}>UI/UX Design</span>
                       </div>
                       {/* Content */}
-                      <div className="flex-1 flex flex-col items-center justify-center p-8 text-white">
-                        <Palette size={64} className="mb-4 text-blue-400" />
+                      <div className={`flex-1 flex flex-col items-center justify-center p-8 ${theme === 'dark' ? 'bg-[#1e1e1e] text-white' : 'bg-white'}`}>
+                        <Palette size={64} className={`mb-4 ${theme === 'dark' ? 'text-blue-400' : 'text-green-400'}`} />
                         <h3 className="text-3xl font-bold mb-3">UI/UX Design</h3>
-                        <p className="text-center text-sm opacity-70">Beautiful, responsive interfaces that users love</p>
+                        <p className={`text-center text-sm ${theme === 'dark' ? 'opacity-70' : ''}`}>Beautiful, responsive interfaces that users love</p>
                       </div>
                     </div>
                   </Card>
-                  <Card customClass="bg-[#1e1e1e] backdrop-blur-sm border border-purple-500/30 shadow-2xl overflow-hidden">
-                    <div className="flex flex-col h-full">
+                  <Card customClass={`${theme === 'dark' ? 'bg-[#1e1e1e]' : 'bg-white'} backdrop-blur-sm border ${theme === 'dark' ? 'border-purple-500/30' : 'border-green-500/30'} shadow-2xl overflow-hidden`}>
+                    <div className={`flex flex-col h-full ${theme === 'dark' ? 'bg-[#1e1e1e]' : 'bg-white'}`}>
                       {/* Terminal Header */}
-                      <div className="bg-[#2d2d2d] px-4 py-3 border-b border-gray-700/50 flex items-center gap-2">
+                      <div className={`${theme === 'dark' ? 'bg-[#2d2d2d] border-gray-700/50' : 'bg-gray-100 border-gray-200'} px-4 py-3 border-b flex items-center gap-2`}>
                         <div className="w-3 h-3 rounded-full bg-red-500"></div>
                         <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                         <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                        <span className="ml-3 text-xs text-gray-400">Performance</span>
+                        <span className={`ml-3 text-xs ${theme === 'dark' ? 'text-gray-400' : ''}`}>Performance</span>
                       </div>
                       {/* Content */}
-                      <div className="flex-1 flex flex-col items-center justify-center p-8 text-white">
-                        <Cpu size={64} className="mb-4 text-purple-400" />
+                      <div className={`flex-1 flex flex-col items-center justify-center p-8 ${theme === 'dark' ? 'bg-[#1e1e1e] text-white' : 'bg-white'}`}>
+                        <Cpu size={64} className={`mb-4 ${theme === 'dark' ? 'text-purple-400' : 'text-green-400'}`} />
                         <h3 className="text-3xl font-bold mb-3">Performance</h3>
-                        <p className="text-center text-sm opacity-70">Optimized code for lightning-fast experiences</p>
+                        <p className={`text-center text-sm ${theme === 'dark' ? 'opacity-70' : ''}`}>Optimized code for lightning-fast experiences</p>
                       </div>
                     </div>
                   </Card>
@@ -216,100 +272,13 @@ export default function Home() {
       </section>
 
         {/* About Section */}
-        <section id="about" className="bg-black py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
-              {/* Left Content */}
-              <div className="bg-black/40 backdrop-blur-sm border border-green-500/20 rounded-2xl p-8 sm:p-12 shadow-2xl">
-                {/* Terminal Header */}
-                <div className="flex items-center gap-2 mb-8 pb-4 border-b border-green-500/30">
-                  <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-                  </div>
-                  <span className="text-green-400/60 text-sm ml-4" style={{ fontFamily: 'Galmuri9, monospace' }}>
-                    ~/portfolio.tsx
-                  </span>
-                </div>
-
-                {/* Terminal Content */}
-                <div className="text-left space-y-4" style={{ fontFamily: 'Galmuri9, monospace' }}>
-                  <div className="text-green-400/80 text-sm sm:text-base">
-                    <span className="text-green-400">$</span> cat profile.txt
-                  </div>
-
-                  <div className="pl-4 space-y-3">
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-green-400 mb-4 leading-relaxed">
-                      프론트엔드 개발자<br />
-                      박소은입니다
-                    </h2>
-
-                    <div className="space-y-6 mt-8">
-                      {/* About Me */}
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-green-400 mb-3">About Me</h3>
-                        <div className="text-green-200/90 text-sm sm:text-base space-y-3 leading-relaxed">
-                          <p>안녕하세요. 사용자 경험을 중심으로 생각하는 프론트엔드 개발자 박소은입니다.</p>
-                          <p>저는 개발을 단순히 기능을 구현하는 것이 아닌, 사용자가 웹을 마주하는 순간의 경험을 설계하는 일이라고 생각합니다. 그래서 시각적 디자인과 인터랙션, 그리고 코드가 조화롭게 만나는 지점을 고민하며 개발합니다.</p>
-                          <p>React, Next.js, TypeScript를 기반으로 웹 애플리케이션을 개발하고 있으며, Framer Motion과 GSAP를 활용해 자연스럽고 의미 있는 인터랙션을 구현합니다. 기술적으로 안정적이면서도, 사용자에게는 기억에 남는 경험을 제공하는 웹을 만들고자 합니다.</p>
-                        </div>
-                      </div>
-
-                      {/* Work Values */}
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-green-400 mb-3">Work Values</h3>
-                        <div className="text-green-200/90 text-sm sm:text-base space-y-3 leading-relaxed">
-                          <p>개발할 때 가장 중요하게 생각하는 가치는 사용자 중심 사고입니다.</p>
-                          <p>"이 기능이 사용자에게 실질적인 도움이 될까?", "이 인터랙션이 사용자의 흐름을 방해하지 않을까?"와 같은 질문을 끊임없이 던지며, 직관적이고 편안한 사용자 경험을 설계하기 위해 노력합니다.</p>
-                          <p>성능 최적화에도 신경 쓰고 있으며, Lighthouse 등의 도구를 활용해 접근성과 성능을 점검합니다. 기술적 완성도와 사용자 경험 사이의 균형을 유지하는 것을 목표로 합니다.</p>
-                        </div>
-                      </div>
-
-                      {/* Growth & Learning */}
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-green-400 mb-3">Growth & Learning</h3>
-                        <div className="text-green-200/90 text-sm sm:text-base space-y-3 leading-relaxed">
-                          <p>새로운 기술을 배우는 것을 두려워하지 않으며, 모르는 것을 마주했을 때 이해하고 내 것으로 만드는 과정을 즐깁니다.</p>
-                          <p>스터디, 온라인 강의, 사이드 프로젝트를 통해 지속적으로 학습하고 있으며, 메타인지적 학습 방식을 통해 스스로의 강점과 보완점을 파악하고 개선해 나가고 있습니다.</p>
-                          <p>피드백을 통한 성장을 중요하게 생각하며, 동료와의 협업과 코드 리뷰를 통해 더 나은 개발자로 성장하고자 합니다.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="text-green-400/60 text-xs sm:text-sm mt-6 animate-pulse">
-                    <span className="inline-block w-2 h-4 bg-green-400 mr-1"></span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Tilted Card */}
-              <div className="w-full md:w-80 lg:w-96 h-full flex items-center justify-center">
-                <TiltedCard
-                  imageSrc="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=600&fit=crop"
-                  altText="Frontend Developer"
-                  captionText="박소은 - Frontend Developer"
-                  containerHeight="500px"
-                  containerWidth="350px"
-                  imageHeight="500px"
-                  imageWidth="350px"
-                  rotateAmplitude={12}
-                  scaleOnHover={1.1}
-                  showMobileWarning={false}
-                  showTooltip={true}
-                  displayOverlayContent={false}
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+        <AboutSection theme={theme} />
 
         {/* Skills Section */}
-        <section id="skills" className="bg-black py-20 px-4 sm:px-6 lg:px-8">
+        <section id="skills" className={`${theme === 'dark' ? 'bg-black' : 'bg-white'} py-20 px-4 sm:px-6 lg:px-8`}>
           <div className="max-w-5xl mx-auto">
-            <div className="bg-black/40 backdrop-blur-sm border border-green-500/20 rounded-2xl p-8 sm:p-12 shadow-2xl">
-              <h2 className="text-4xl sm:text-5xl font-bold text-green-400 mb-8 text-center">
+            <div className={`${theme === 'dark' ? 'bg-black/40' : 'bg-white'} backdrop-blur-sm border ${theme === 'dark' ? 'border-green-500/20' : 'border-gray-300'} rounded-2xl p-8 sm:p-12 ${theme === 'dark' ? 'shadow-2xl' : ''}`}>
+              <h2 className={`text-4xl sm:text-5xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-8 text-center`}>
                 <span className="text-green-500">〈</span> Tech Stack <span className="text-green-500">/〉</span>
               </h2>
 
@@ -329,44 +298,44 @@ export default function Home() {
               </div>
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="cursor-target bg-green-500/5 border border-green-500/20 rounded-xl p-6 hover:bg-green-500/10 hover:border-green-500/40 transition-all">
+                <div className={`cursor-target ${theme === 'dark' ? 'bg-green-500/5 border-green-500/20 hover:bg-green-500/10 hover:border-green-500/40' : 'bg-gray-100 border-gray-300 hover:bg-gray-200 hover:border-gray-400'} border rounded-xl p-6 transition-all`}>
                   <div className="flex justify-center mb-4">
-                    <Code2 className="w-12 h-12 text-green-400" />
+                    <Code2 className={`w-12 h-12 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
                   </div>
-                  <h3 className="text-xl font-semibold text-green-400 mb-3 text-center">Languages</h3>
-                  <ul className="space-y-2 text-green-200/70 text-sm">
+                  <h3 className={`text-xl font-semibold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-3 text-center`}>Languages</h3>
+                  <ul className={`space-y-2 ${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm`}>
                     <li>JavaScript / TypeScript</li>
                     <li>Java / Python</li>
                     <li>HTML / CSS</li>
                   </ul>
                 </div>
-                <div className="cursor-target bg-green-500/5 border border-green-500/20 rounded-xl p-6 hover:bg-green-500/10 hover:border-green-500/40 transition-all">
+                <div className={`cursor-target ${theme === 'dark' ? 'bg-green-500/5 border-green-500/20 hover:bg-green-500/10 hover:border-green-500/40' : 'bg-gray-100 border-gray-300 hover:bg-gray-200 hover:border-gray-400'} border rounded-xl p-6 transition-all`}>
                   <div className="flex justify-center mb-4">
-                    <Palette className="w-12 h-12 text-green-400" />
+                    <Palette className={`w-12 h-12 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
                   </div>
-                  <h3 className="text-xl font-semibold text-green-400 mb-3 text-center">Frontend</h3>
-                  <ul className="space-y-2 text-green-200/70 text-sm">
+                  <h3 className={`text-xl font-semibold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-3 text-center`}>Frontend</h3>
+                  <ul className={`space-y-2 ${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm`}>
                     <li>React / Next.js</li>
                     <li>Tailwind CSS</li>
                     <li>Responsive Design</li>
                   </ul>
                 </div>
-                <div className="cursor-target bg-green-500/5 border border-green-500/20 rounded-xl p-6 hover:bg-green-500/10 hover:border-green-500/40 transition-all">
+                <div className={`cursor-target ${theme === 'dark' ? 'bg-green-500/5 border-green-500/20 hover:bg-green-500/10 hover:border-green-500/40' : 'bg-gray-100 border-gray-300 hover:bg-gray-200 hover:border-gray-400'} border rounded-xl p-6 transition-all`}>
                   <div className="flex justify-center mb-4">
-                    <Cpu className="w-12 h-12 text-green-400" />
+                    <Cpu className={`w-12 h-12 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
                   </div>
-                  <h3 className="text-xl font-semibold text-green-400 mb-3 text-center">Animation</h3>
-                  <ul className="space-y-2 text-green-200/70 text-sm">
+                  <h3 className={`text-xl font-semibold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-3 text-center`}>Animation</h3>
+                  <ul className={`space-y-2 ${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm`}>
                     <li>Framer Motion</li>
                     <li>CSS Animations</li>
                   </ul>
                 </div>
-                <div className="cursor-target bg-green-500/5 border border-green-500/20 rounded-xl p-6 hover:bg-green-500/10 hover:border-green-500/40 transition-all">
+                <div className={`cursor-target ${theme === 'dark' ? 'bg-green-500/5 border-green-500/20 hover:bg-green-500/10 hover:border-green-500/40' : 'bg-gray-100 border-gray-300 hover:bg-gray-200 hover:border-gray-400'} border rounded-xl p-6 transition-all`}>
                   <div className="flex justify-center mb-4">
-                    <Database className="w-12 h-12 text-green-400" />
+                    <Database className={`w-12 h-12 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
                   </div>
-                  <h3 className="text-xl font-semibold text-green-400 mb-3 text-center">Tools & Workflow</h3>
-                  <ul className="space-y-2 text-green-200/70 text-sm">
+                  <h3 className={`text-xl font-semibold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-3 text-center`}>Tools & Workflow</h3>
+                  <ul className={`space-y-2 ${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm`}>
                     <li>Git / GitHub</li>
                     <li>Cursor / Claude Code</li>
                     <li>Figma</li>
@@ -393,42 +362,42 @@ export default function Home() {
         </section>
 
         {/* Awards Section */}
-        <section id="awards" className="bg-black py-20 px-4 sm:px-6 lg:px-8">
+        <section id="awards" className={`${theme === 'dark' ? 'bg-black' : 'bg-white'} py-20 px-4 sm:px-6 lg:px-8`}>
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl sm:text-5xl font-bold text-green-400 mb-12 text-center">
+            <h2 className={`text-4xl sm:text-5xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-12 text-center`}>
               <span className="text-green-500">〈</span> Awards <span className="text-green-500">/〉</span>
             </h2>
 
             <div className="space-y-6">
               {/* Award 1 */}
-              <div className="cursor-target bg-black/40 backdrop-blur-sm border border-green-500/20 rounded-xl p-6 sm:p-8 hover:border-green-500/40 transition-all">
+              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center">
-                    <Trophy className="w-6 h-6 text-green-400" />
+                  <div className={`flex-shrink-0 w-12 h-12 ${theme === 'dark' ? 'bg-green-500/10' : 'bg-green-100'} rounded-lg flex items-center justify-center`}>
+                    <Trophy className={`w-6 h-6 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
                   </div>
                   <div className="flex-1">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                      <h3 className="text-xl sm:text-2xl font-bold text-green-400">서울 AI 이노베이션 챌린지 2024 (아이디어톤)</h3>
-                      <span className="text-green-400/60 text-sm mt-1 sm:mt-0">장려상</span>
+                      <h3 className={`text-xl sm:text-2xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>서울 AI 이노베이션 챌린지 2024 (아이디어톤)</h3>
+                      <span className={`${theme === 'dark' ? 'text-green-400/60' : 'text-green-500'} text-sm mt-1 sm:mt-0`}>장려상</span>
                     </div>
 
-                    <div className="flex items-center gap-2 text-green-300/70 text-sm mb-4">
+                    <div className={`flex items-center gap-2 ${theme === 'dark' ? 'text-green-300/70' : 'text-gray-900'} text-sm mb-4`}>
                       <Calendar className="w-4 h-4" />
                       <span>2024.06.28</span>
                     </div>
 
                     <div className="space-y-3">
                       <div>
-                        <h4 className="text-green-400 font-semibold mb-1 flex items-center gap-2">
+                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 flex items-center gap-2`}>
                           <Lightbulb className="w-4 h-4" />
                           프로젝트
                         </h4>
-                        <p className="text-green-200/80 pl-6">범-드론 프로젝트 - 드론 카메라에 AI를 학습시켜 멧돼지를 감지하는 드론</p>
+                        <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} pl-6`}>범-드론 프로젝트 - 드론 카메라에 AI를 학습시켜 멧돼지를 감지하는 드론</p>
                       </div>
 
                       <div>
-                        <h4 className="text-green-400 font-semibold mb-1">배운 점</h4>
-                        <p className="text-green-200/70 text-sm pl-6">사회 문제를 기술로 해결하는 아이디어 발상 능력을 키웠으며, AI와 드론 기술을 결합한 창의적인 솔루션 기획 경험을 쌓았습니다. 짧은 시간 안에 아이디어를 구체화하고 효과적으로 발표하는 프레젠테이션 역량을 향상시켰습니다.</p>
+                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1`}>배운 점</h4>
+                        <p className={`${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm pl-6`}>사회 문제를 기술로 해결하는 아이디어 발상 능력을 키웠으며, AI와 드론 기술을 결합한 창의적인 솔루션 기획 경험을 쌓았습니다. 짧은 시간 안에 아이디어를 구체화하고 효과적으로 발표하는 프레젠테이션 역량을 향상시켰습니다.</p>
                       </div>
                     </div>
                   </div>
@@ -436,52 +405,52 @@ export default function Home() {
               </div>
 
               {/* Award 2 */}
-              <div className="cursor-target bg-black/40 backdrop-blur-sm border border-green-500/20 rounded-xl p-6 sm:p-8 hover:border-green-500/40 transition-all">
+              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center">
-                    <Trophy className="w-6 h-6 text-green-400" />
+                  <div className={`flex-shrink-0 w-12 h-12 ${theme === 'dark' ? 'bg-green-500/10' : 'bg-green-100'} rounded-lg flex items-center justify-center`}>
+                    <Trophy className={`w-6 h-6 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
                   </div>
                   <div className="flex-1">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                      <h3 className="text-xl sm:text-2xl font-bold text-green-400">학생 창업마라톤 2025</h3>
-                      <span className="text-green-400/60 text-sm mt-1 sm:mt-0">장려상</span>
+                      <h3 className={`text-xl sm:text-2xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>학생 창업마라톤 2025</h3>
+                      <span className={`${theme === 'dark' ? 'text-green-400/60' : 'text-green-500'} text-sm mt-1 sm:mt-0`}>장려상</span>
                     </div>
 
-                    <div className="flex items-center gap-2 text-green-300/70 text-sm mb-4">
+                    <div className={`flex items-center gap-2 ${theme === 'dark' ? 'text-green-300/70' : 'text-gray-900'} text-sm mb-4`}>
                       <Calendar className="w-4 h-4" />
                       <span>2025.07.04</span>
-                      <span className="text-green-400/40">•</span>
+                      <span className={theme === 'dark' ? 'text-green-400/40' : 'text-gray-500'}>•</span>
                       <span>과학기술대학교/삼육보건대 주최</span>
                     </div>
 
                     <div className="space-y-3">
                       <div>
-                        <h4 className="text-green-400 font-semibold mb-1 flex items-center gap-2">
+                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 flex items-center gap-2`}>
                           <Lightbulb className="w-4 h-4" />
                           서비스
                         </h4>
-                        <p className="text-green-200/80 pl-6">마마케어 - 임산부를 위한 맞춤형 헬스케어 어플리케이션</p>
+                        <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} pl-6`}>마마케어 - 임산부를 위한 맞춤형 헬스케어 어플리케이션</p>
                       </div>
 
                       <div>
-                        <h4 className="text-green-400 font-semibold mb-1 flex items-center gap-2">
+                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 flex items-center gap-2`}>
                           <Users className="w-4 h-4" />
                           역할
                         </h4>
-                        <p className="text-green-200/80 pl-6">팀장, 발표, 앱 디자인 및 프론트엔드 개발</p>
+                        <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} pl-6`}>팀장, 발표, 앱 디자인 및 프론트엔드 개발</p>
                       </div>
 
                       <div>
-                        <h4 className="text-green-400 font-semibold mb-1">사용 기술</h4>
+                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1`}>사용 기술</h4>
                         <div className="flex flex-wrap gap-2 pl-6">
-                          <span className="px-3 py-1 bg-green-500/10 border border-green-500/30 text-green-400 rounded text-sm">Claude Code</span>
-                          <span className="px-3 py-1 bg-green-500/10 border border-green-500/30 text-green-400 rounded text-sm">Figma</span>
+                          <span className={`px-3 py-1 ${theme === 'dark' ? 'bg-green-500/10 border-green-500/30 text-green-400' : 'bg-green-100 border-green-300 text-green-500'} border rounded text-sm`}>Claude Code</span>
+                          <span className={`px-3 py-1 ${theme === 'dark' ? 'bg-green-500/10 border-green-500/30 text-green-400' : 'bg-green-100 border-green-300 text-green-500'} border rounded text-sm`}>Figma</span>
                         </div>
                       </div>
 
                       <div>
-                        <h4 className="text-green-400 font-semibold mb-1">배운 점</h4>
-                        <p className="text-green-200/70 text-sm pl-6">팀 리더십과 프로젝트 관리 능력을 향상시켰으며, 사용자 중심의 헬스케어 앱 디자인 및 개발 경험을 쌓았습니다. AI 도구를 활용한 빠른 프로토타이핑과 협업 프로세스 최적화를 통해 효율적인 개발 방법론을 습득했습니다.</p>
+                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1`}>배운 점</h4>
+                        <p className={`${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm pl-6`}>팀 리더십과 프로젝트 관리 능력을 향상시켰으며, 사용자 중심의 헬스케어 앱 디자인 및 개발 경험을 쌓았습니다. AI 도구를 활용한 빠른 프로토타이핑과 협업 프로세스 최적화를 통해 효율적인 개발 방법론을 습득했습니다.</p>
                       </div>
                     </div>
                   </div>
@@ -492,67 +461,67 @@ export default function Home() {
         </section>
 
         {/* Projects Section */}
-        <section id="projects" className="bg-black py-20 px-4 sm:px-6 lg:px-8">
+        <section id="projects" className={`${theme === 'dark' ? 'bg-black' : 'bg-white'} py-20 px-4 sm:px-6 lg:px-8`}>
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl sm:text-5xl font-bold text-green-400 mb-12 text-center">
+            <h2 className={`text-4xl sm:text-5xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-12 text-center`}>
               <span className="text-green-500">〈</span> Projects <span className="text-green-500">/〉</span>
             </h2>
 
             <div className="space-y-6">
               {/* Project 1: Portfolio Website */}
-              <div className="cursor-target bg-black/40 backdrop-blur-sm border border-green-500/20 rounded-xl p-6 sm:p-8 hover:border-green-500/40 transition-all">
-                <h3 className="text-3xl sm:text-4xl font-bold text-green-400 mb-4">포트폴리오</h3>
+              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
+                <h3 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-4`}>포트폴리오</h3>
 
                 {/* Info Grid */}
                 <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-4">
                   <div>
-                    <h4 className="text-green-400 font-semibold mb-1 text-base">타입</h4>
-                    <p className="text-green-200/80 text-sm leading-tight">웹</p>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>타입</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>웹</p>
                   </div>
                   <div>
-                    <h4 className="text-green-400 font-semibold mb-1 text-base">프론트엔드 규모</h4>
-                    <p className="text-green-200/80 text-sm leading-tight">개인 프로젝트</p>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>프론트엔드 규모</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>개인 프로젝트</p>
                   </div>
                   <div>
-                    <h4 className="text-green-400 font-semibold mb-1 text-base">참여도</h4>
-                    <p className="text-green-200/80 text-sm leading-tight">프론트 100%</p>
-                    <p className="text-green-200/80 text-sm leading-tight">디자인 100%</p>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>참여도</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>프론트 100%</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>디자인 100%</p>
                   </div>
                   <div>
-                    <h4 className="text-green-400 font-semibold mb-1 text-base">라이브러리</h4>
-                    <p className="text-green-200/80 text-sm leading-tight">Three.js</p>
-                    <p className="text-green-200/80 text-sm leading-tight">GSAP</p>
-                    <p className="text-green-200/80 text-sm leading-tight">Framer Motion</p>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>라이브러리</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Three.js</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>GSAP</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Framer Motion</p>
                   </div>
                   <div>
-                    <h4 className="text-green-400 font-semibold mb-1 text-base">프레임워크</h4>
-                    <p className="text-green-200/80 text-sm leading-tight">Next.js</p>
-                    <p className="text-green-200/80 text-sm leading-tight">React</p>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>프레임워크</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Next.js</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>React</p>
                   </div>
                 </div>
 
                 {/* 작업 기여도 */}
                 <div className="mb-3">
-                  <h4 className="text-green-400 font-semibold mb-2 text-lg">작업 기여도</h4>
-                  <ul className="space-y-1 text-green-200/80 text-lg">
+                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>작업 기여도</h4>
+                  <ul className={`space-y-1 ${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-lg`}>
                     <li className="flex gap-2">
-                      <span className="text-green-400">•</span>
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
                       <span>다양한 피드백을 긍정적으로 받아들이고, 이를 바탕으로 구체적이고 실질적인 해결책을 제공하여 프로젝트의 완성도를 높였습니다.</span>
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-green-400">•</span>
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
                       <span>PC 및 모바일에 최적화된 모든 서비스 페이지의 디자인을 작업했습니다.</span>
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-green-400">•</span>
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
                       <span>게이미피케이션 요소에 집중하여, 사용자 참여율을 유도하는 디자인과 개발을 성공적으로 구현했습니다.</span>
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-green-400">•</span>
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
                       <span>웹 표준 및 접근성 규정을 준수하며 퍼블리싱을 수행하여, 다양한 사용자들이 쉽게 접근할 수 있는 환경을 조성했습니다.</span>
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-green-400">•</span>
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
                       <span>테이블 기반으로 구성되어 있던 웹 구조를 반응형 웹으로 전환하여, 유지보수 및 작업 효율성을 크게 개선했습니다.</span>
                     </li>
                   </ul>
@@ -588,59 +557,59 @@ export default function Home() {
               </div>
 
               {/* Project 2: 마마케어 */}
-              <div className="cursor-target bg-black/40 backdrop-blur-sm border border-green-500/20 rounded-xl p-6 sm:p-8 hover:border-green-500/40 transition-all">
-                <h3 className="text-3xl sm:text-4xl font-bold text-green-400 mb-4">마마케어</h3>
+              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
+                <h3 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-4`}>마마케어</h3>
 
                 {/* Info Grid */}
                 <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-4">
                   <div>
-                    <h4 className="text-green-400 font-semibold mb-1 text-base">타입</h4>
-                    <p className="text-green-200/80 text-sm leading-tight">모바일</p>
-                    <p className="text-green-200/80 text-sm leading-tight">안드로이드</p>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>타입</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>모바일</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>안드로이드</p>
                   </div>
                   <div>
-                    <h4 className="text-green-400 font-semibold mb-1 text-base">프론트엔드 규모</h4>
-                    <p className="text-green-200/80 text-sm leading-tight">팀 프로젝트</p>
-                    <p className="text-green-200/80 text-sm leading-tight">한이음</p>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>프론트엔드 규모</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>팀 프로젝트</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>한이음</p>
                   </div>
                   <div>
-                    <h4 className="text-green-400 font-semibold mb-1 text-base">참여도</h4>
-                    <p className="text-green-200/80 text-sm leading-tight">프론트 60%</p>
-                    <p className="text-green-200/80 text-sm leading-tight">디자인 100%</p>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>참여도</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>프론트 60%</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>디자인 100%</p>
                   </div>
                   <div>
-                    <h4 className="text-green-400 font-semibold mb-1 text-base">개발 환경</h4>
-                    <p className="text-green-200/80 text-sm leading-tight">Android Studio</p>
-                    <p className="text-green-200/80 text-sm leading-tight">Java</p>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>개발 환경</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Android Studio</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Java</p>
                   </div>
                   <div>
-                    <h4 className="text-green-400 font-semibold mb-1 text-base">기간</h4>
-                    <p className="text-green-200/80 text-sm leading-tight">2025.03 ~ 2025.11</p>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>기간</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>2025.03 ~ 2025.11</p>
                   </div>
                 </div>
 
                 {/* 작업 기여도 */}
                 <div className="mb-3">
-                  <h4 className="text-green-400 font-semibold mb-2 text-lg">작업 기여도</h4>
-                  <ul className="space-y-1 text-green-200/80 text-lg">
+                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>작업 기여도</h4>
+                  <ul className={`space-y-1 ${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-lg`}>
                     <li className="flex gap-2">
-                      <span className="text-green-400">•</span>
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
                       <span>임산부의 24시간을 스마트워치로 지키는 임신 주차 맞춤형 AI 헬스케어 플랫폼 개발</span>
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-green-400">•</span>
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
                       <span>팀장으로서 프로젝트 전체 일정 관리 및 팀원 간 협업 조율</span>
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-green-400">•</span>
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
                       <span>UI/UX 디자인 전체 담당, 임산부 사용자를 고려한 직관적인 인터페이스 설계</span>
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-green-400">•</span>
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
                       <span>안드로이드 앱 프론트엔드 개발 주도, 화면 구성 및 사용자 인터랙션 구현</span>
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-green-400">•</span>
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
                       <span>Claude Code를 활용한 빠른 프로토타이핑과 코드 최적화</span>
                     </li>
                   </ul>
@@ -648,7 +617,7 @@ export default function Home() {
 
                 {/* 스크린샷 */}
                 <div>
-                  <h4 className="text-green-400 font-semibold mb-2 text-lg">스크린샷</h4>
+                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>스크린샷</h4>
                   <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
                     {[1, 2, 3, 4, 5, 6].map((i) => (
                       <div
@@ -668,24 +637,24 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="bg-black py-20 px-4 sm:px-6 lg:px-8 mb-20">
+        <section id="contact" className={`${theme === 'dark' ? 'bg-black' : 'bg-white'} py-20 px-4 sm:px-6 lg:px-8 mb-20`}>
           <div className="max-w-4xl mx-auto">
-            <div className="bg-black/40 backdrop-blur-sm border border-green-500/20 rounded-2xl p-8 sm:p-12 shadow-2xl text-center">
-              <h2 className="text-4xl sm:text-5xl font-bold text-green-400 mb-8">
+            <div className={`${theme === 'dark' ? 'bg-black/40' : 'bg-white'} backdrop-blur-sm border ${theme === 'dark' ? 'border-green-500/20' : 'border-gray-300'} rounded-2xl p-8 sm:p-12 ${theme === 'dark' ? 'shadow-2xl' : ''} text-center`}>
+              <h2 className={`text-4xl sm:text-5xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-8`}>
                 <span className="text-green-500">〈</span> Contact <span className="text-green-500">/〉</span>
               </h2>
 
-              <div className="max-w-3xl mx-auto space-y-6 text-green-200/90 text-base sm:text-lg leading-relaxed mb-12">
+              <div className={`max-w-3xl mx-auto space-y-6 ${theme === 'dark' ? 'text-green-200/90' : 'text-gray-900'} text-base sm:text-lg leading-relaxed mb-12`}>
                 <p>주니어 개발자로서 아직 부족한 점이 많지만,<br />그만큼 배우고 성장할 여지가 크다고 생각합니다.</p>
                 <p>새로운 기술과 도전을 즐기며, 실패를 두려워하지 않고 꾸준히 발전하고자 합니다.</p>
                 <p>좋은 팀에서 선배 개발자들과 협업하며 실무 경험을 쌓고,<br />사용자에게 실질적인 가치를 제공하는 프로덕트를 만드는 데 기여하고 싶습니다.</p>
-                <p className="text-green-400 font-semibold text-lg sm:text-xl">함께 성장하며 의미 있는 일을 만들어갈 수 있는 기회를 주신다면<br />최선을 다하겠습니다. 감사합니다.</p>
+                <p className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold text-lg sm:text-xl`}>함께 성장하며 의미 있는 일을 만들어갈 수 있는 기회를 주신다면<br />최선을 다하겠습니다. 감사합니다.</p>
               </div>
 
               <div className="flex flex-wrap gap-6 justify-center mb-10">
                 <a
                   href="mailto:your.email@example.com"
-                  className="cursor-target flex items-center gap-3 px-6 py-3 bg-green-500/10 hover:bg-green-500/20 text-green-400 rounded-lg border border-green-500/30 transition-all transform hover:scale-105"
+                  className="cursor-target flex items-center gap-3 px-6 py-3 bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/30 rounded-lg border transition-all transform hover:scale-105"
                 >
                   <Mail className="w-5 h-5" />
                   <span>Email</span>
@@ -694,7 +663,7 @@ export default function Home() {
                   href="https://github.com/yourusername"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="cursor-target flex items-center gap-3 px-6 py-3 bg-green-500/10 hover:bg-green-500/20 text-green-400 rounded-lg border border-green-500/30 transition-all transform hover:scale-105"
+                  className="cursor-target flex items-center gap-3 px-6 py-3 bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/30 rounded-lg border transition-all transform hover:scale-105"
                 >
                   <Github className="w-5 h-5" />
                   <span>GitHub</span>
@@ -703,7 +672,7 @@ export default function Home() {
                   href="https://linkedin.com/in/yourusername"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="cursor-target flex items-center gap-3 px-6 py-3 bg-green-500/10 hover:bg-green-500/20 text-green-400 rounded-lg border border-green-500/30 transition-all transform hover:scale-105"
+                  className="cursor-target flex items-center gap-3 px-6 py-3 bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/30 rounded-lg border transition-all transform hover:scale-105"
                 >
                   <Linkedin className="w-5 h-5" />
                   <span>LinkedIn</span>
@@ -726,5 +695,6 @@ export default function Home() {
         />
       </div>
     </ClickSpark>
+    </>
   );
 }
