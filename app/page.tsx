@@ -196,7 +196,7 @@ export default function Home() {
                   />
                   <br />
                   I'm FrontEnd Developer<br />
-                  <span className="text-green-400">Park Soeun</span>
+                  <span className={theme === 'dark' ? 'text-yellow-400' : 'text-green-400'}>Park Soeun</span>
                 </h1>
               </div>
 
