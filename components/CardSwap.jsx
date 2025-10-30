@@ -79,9 +79,9 @@ const CardSwap = ({
       if (r.current) {
         r.current.setAttribute('data-is-front', i === 0 ? 'true' : 'false');
 
-        // Set text color for light theme
+        // Set text color for light theme (excluding h3 to keep green color)
         if (theme === 'light') {
-          const textElements = r.current.querySelectorAll('h3, p, span');
+          const textElements = r.current.querySelectorAll('p, span');
           textElements.forEach(el => {
             gsap.set(el, { color: i === 0 ? '#111827' : '#d1d5db' });
           });
@@ -125,9 +125,9 @@ const CardSwap = ({
         if (i === 0) {
           tl.call(() => {
             el.setAttribute('data-is-front', 'true');
-            // Change text color to dark for front card in light theme
+            // Change text color to dark for front card in light theme (excluding h3)
             if (theme === 'light') {
-              const textElements = el.querySelectorAll('h3, p, span');
+              const textElements = el.querySelectorAll('p, span');
               textElements.forEach(textEl => {
                 gsap.to(textEl, { color: '#111827', duration: 0.3 });
               });
@@ -136,9 +136,9 @@ const CardSwap = ({
         } else {
           tl.call(() => {
             el.setAttribute('data-is-front', 'false');
-            // Change text color to gray for non-front cards in light theme
+            // Change text color to gray for non-front cards in light theme (excluding h3)
             if (theme === 'light') {
-              const textElements = el.querySelectorAll('h3, p, span');
+              const textElements = el.querySelectorAll('p, span');
               textElements.forEach(textEl => {
                 gsap.to(textEl, { color: '#d1d5db', duration: 0.3 });
               });
@@ -169,9 +169,9 @@ const CardSwap = ({
       );
       tl.call(() => {
         elFront.setAttribute('data-is-front', 'false');
-        // Change text color to gray when going to back in light theme
+        // Change text color to gray when going to back in light theme (excluding h3)
         if (theme === 'light') {
-          const textElements = elFront.querySelectorAll('h3, p, span');
+          const textElements = elFront.querySelectorAll('p, span');
           textElements.forEach(textEl => {
             gsap.to(textEl, { color: '#d1d5db', duration: 0.3 });
           });

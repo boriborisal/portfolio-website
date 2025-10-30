@@ -225,7 +225,7 @@ export default function Home() {
                       {/* Content */}
                       <div className={`flex-1 flex flex-col items-center justify-center p-8 ${theme === 'dark' ? 'bg-[#1e1e1e] text-white' : 'bg-white'}`}>
                         <Code2 size={64} className="mb-4 text-green-400" />
-                        <h3 className="text-3xl font-bold mb-3">React & Next.js</h3>
+                        <h3 className="text-3xl font-bold mb-3 text-green-400">React & Next.js</h3>
                         <p className={`text-center text-sm ${theme === 'dark' ? 'opacity-70' : ''}`}>Modern web applications with cutting-edge frameworks</p>
                       </div>
                     </div>
@@ -242,7 +242,7 @@ export default function Home() {
                       {/* Content */}
                       <div className={`flex-1 flex flex-col items-center justify-center p-8 ${theme === 'dark' ? 'bg-[#1e1e1e] text-white' : 'bg-white'}`}>
                         <Palette size={64} className={`mb-4 ${theme === 'dark' ? 'text-blue-400' : 'text-green-400'}`} />
-                        <h3 className="text-3xl font-bold mb-3">UI/UX Design</h3>
+                        <h3 className="text-3xl font-bold mb-3 text-green-400">UI/UX Design</h3>
                         <p className={`text-center text-sm ${theme === 'dark' ? 'opacity-70' : ''}`}>Beautiful, responsive interfaces that users love</p>
                       </div>
                     </div>
@@ -259,7 +259,7 @@ export default function Home() {
                       {/* Content */}
                       <div className={`flex-1 flex flex-col items-center justify-center p-8 ${theme === 'dark' ? 'bg-[#1e1e1e] text-white' : 'bg-white'}`}>
                         <Cpu size={64} className={`mb-4 ${theme === 'dark' ? 'text-purple-400' : 'text-green-400'}`} />
-                        <h3 className="text-3xl font-bold mb-3">Performance</h3>
+                        <h3 className="text-3xl font-bold mb-3 text-green-400">Performance</h3>
                         <p className={`text-center text-sm ${theme === 'dark' ? 'opacity-70' : ''}`}>Optimized code for lightning-fast experiences</p>
                       </div>
                     </div>
@@ -392,12 +392,12 @@ export default function Home() {
                           <Lightbulb className="w-4 h-4" />
                           프로젝트
                         </h4>
-                        <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} pl-6`}>범-드론 프로젝트 - 드론 카메라에 AI를 학습시켜 멧돼지를 감지하는 드론</p>
+                        <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} pl-6`}>범-드론 - AI 비전 기술과 드론을 결합하여 농작물 피해를 일으키는 멧돼지를 감지하는 시스템</p>
                       </div>
 
                       <div>
                         <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1`}>배운 점</h4>
-                        <p className={`${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm pl-6`}>사회 문제를 기술로 해결하는 아이디어 발상 능력을 키웠으며, AI와 드론 기술을 결합한 창의적인 솔루션 기획 경험을 쌓았습니다. 짧은 시간 안에 아이디어를 구체화하고 효과적으로 발표하는 프레젠테이션 역량을 향상시켰습니다.</p>
+                        <p className={`${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm pl-6`}>AI 비전 기술과 드론을 결합한 사회 문제 해결 아이디어 기획 경험. 사회 문제를 기술적 관점에서 분석하고, 제한된 시간 안에 실현 가능한 솔루션을 도출하여 효과적으로 발표하는 능력 향상.</p>
                       </div>
                     </div>
                   </div>
@@ -420,7 +420,7 @@ export default function Home() {
                       <Calendar className="w-4 h-4" />
                       <span>2025.07.04</span>
                       <span className={theme === 'dark' ? 'text-green-400/40' : 'text-gray-500'}>•</span>
-                      <span>과학기술대학교/삼육보건대 주최</span>
+                      <span>과학기술대학교/삼육보건대학교 주최</span>
                     </div>
 
                     <div className="space-y-3">
@@ -437,20 +437,20 @@ export default function Home() {
                           <Users className="w-4 h-4" />
                           역할
                         </h4>
-                        <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} pl-6`}>팀장, 발표, 앱 디자인 및 프론트엔드 개발</p>
+                        <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} pl-6`}>팀장, UI/UX 디자인, 프론트엔드 개발</p>
                       </div>
 
                       <div>
                         <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1`}>사용 기술</h4>
                         <div className="flex flex-wrap gap-2 pl-6">
-                          <span className={`px-3 py-1 ${theme === 'dark' ? 'bg-green-500/10 border-green-500/30 text-green-400' : 'bg-green-100 border-green-300 text-green-500'} border rounded text-sm`}>Claude Code</span>
+                          <span className={`px-3 py-1 ${theme === 'dark' ? 'bg-green-500/10 border-green-500/30 text-green-400' : 'bg-green-100 border-green-300 text-green-500'} border rounded text-sm`}>Android Studio / Java</span>
                           <span className={`px-3 py-1 ${theme === 'dark' ? 'bg-green-500/10 border-green-500/30 text-green-400' : 'bg-green-100 border-green-300 text-green-500'} border rounded text-sm`}>Figma</span>
                         </div>
                       </div>
 
                       <div>
                         <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1`}>배운 점</h4>
-                        <p className={`${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm pl-6`}>팀 리더십과 프로젝트 관리 능력을 향상시켰으며, 사용자 중심의 헬스케어 앱 디자인 및 개발 경험을 쌓았습니다. AI 도구를 활용한 빠른 프로토타이핑과 협업 프로세스 최적화를 통해 효율적인 개발 방법론을 습득했습니다.</p>
+                        <p className={`${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm pl-6`}>4명 팀 리더로서 9개월 프로젝트 완수. 임산부 10명 직접 인터뷰하여 '글자가 작다', '메뉴가 복잡하다'는 구체적 불편 사항 도출 후, 폰트 120% 확대 및 3탭 구조로 재설계. Notion 기반 투명한 작업 관리와 효율적 협업으로 개발 기간 30% 단축 (10주 → 7주).</p>
                       </div>
                     </div>
                   </div>
@@ -506,23 +506,27 @@ export default function Home() {
                   <ul className={`space-y-1 ${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-lg`}>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>다양한 피드백을 긍정적으로 받아들이고, 이를 바탕으로 구체적이고 실질적인 해결책을 제공하여 프로젝트의 완성도를 높였습니다.</span>
+                      <span>Next.js App Router 기반 포트폴리오 웹사이트 개발</span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>PC 및 모바일에 최적화된 모든 서비스 페이지의 디자인을 작업했습니다.</span>
+                      <span>Three.js를 활용한 3D 인터랙션 구현 (마우스 움직임 반응형 오브젝트)</span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>게이미피케이션 요소에 집중하여, 사용자 참여율을 유도하는 디자인과 개발을 성공적으로 구현했습니다.</span>
+                      <span>GSAP와 Framer Motion으로 페이지 전환 및 스크롤 애니메이션 구현</span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>웹 표준 및 접근성 규정을 준수하며 퍼블리싱을 수행하여, 다양한 사용자들이 쉽게 접근할 수 있는 환경을 조성했습니다.</span>
+                      <span>완전 반응형 디자인: 모바일/태블릿/데스크톱 최적화</span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>테이블 기반으로 구성되어 있던 웹 구조를 반응형 웹으로 전환하여, 유지보수 및 작업 효율성을 크게 개선했습니다.</span>
+                      <span>사용자 피드백 수용하여 모바일 애니메이션 간소화 (UX 개선)</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>Lighthouse 성능 90+ 달성 (Performance, Accessibility, SEO)</span>
                     </li>
                   </ul>
                 </div>
@@ -594,23 +598,23 @@ export default function Home() {
                   <ul className={`space-y-1 ${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-lg`}>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>임산부의 24시간을 스마트워치로 지키는 임신 주차 맞춤형 AI 헬스케어 플랫폼 개발</span>
+                      <span>팀장: 4명 팀원 9개월 프로젝트 일정 관리 및 협업 조율</span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>팀장으로서 프로젝트 전체 일정 관리 및 팀원 간 협업 조율</span>
+                      <span>디자인: Figma로 전체 UI 설계 (50+ 화면), 임산부 10명 인터뷰 통해 니즈 반영</span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>UI/UX 디자인 전체 담당, 임산부 사용자를 고려한 직관적인 인터페이스 설계</span>
+                      <span>개발: Android 프론트엔드 주요 화면 구현 및 API 연동 (60%)</span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>안드로이드 앱 프론트엔드 개발 주도, 화면 구성 및 사용자 인터랙션 구현</span>
+                      <span>성과: 효율적 협업으로 개발 기간 30% 단축 (10주 → 7주)</span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>Claude Code를 활용한 빠른 프로토타이핑과 코드 최적화</span>
+                      <span>수상: 학생 창업마라톤 2025 장려상</span>
                     </li>
                   </ul>
                 </div>
@@ -645,10 +649,10 @@ export default function Home() {
               </h2>
 
               <div className={`max-w-3xl mx-auto space-y-6 ${theme === 'dark' ? 'text-green-200/90' : 'text-gray-900'} text-base sm:text-lg leading-relaxed mb-12`}>
-                <p>주니어 개발자로서 아직 부족한 점이 많지만,<br />그만큼 배우고 성장할 여지가 크다고 생각합니다.</p>
-                <p>새로운 기술과 도전을 즐기며, 실패를 두려워하지 않고 꾸준히 발전하고자 합니다.</p>
-                <p>좋은 팀에서 선배 개발자들과 협업하며 실무 경험을 쌓고,<br />사용자에게 실질적인 가치를 제공하는 프로덕트를 만드는 데 기여하고 싶습니다.</p>
-                <p className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold text-lg sm:text-xl`}>함께 성장하며 의미 있는 일을 만들어갈 수 있는 기회를 주신다면<br />최선을 다하겠습니다. 감사합니다.</p>
+                <p>게임 파일을 뜯어보던 호기심으로 시작해,<br />지금은 사용자에게 가치 있는 웹을 만드는 개발자가 되었습니다.</p>
+                <p>주니어 개발자로서 배워야 할 것이 많지만,<br />새로운 기술을 두려워하지 않고 빠르게 습득하는 것이 저의 강점입니다.</p>
+                <p>선배 개발자들과 협업하며 실무 경험을 쌓고,<br />코드 리뷰를 통해 더 나은 코드를 작성하는 방법을 배우고 싶습니다.</p>
+                <p className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold text-lg sm:text-xl`}>사용자에게 실질적인 가치를 제공하는 프로덕트를 함께 만들어갈 수 있다면<br />최선을 다하겠습니다. 감사합니다.</p>
               </div>
 
               <div className="flex flex-wrap gap-6 justify-center mb-10">
