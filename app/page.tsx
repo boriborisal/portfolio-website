@@ -657,14 +657,14 @@ export default function Home() {
 
               <div className="flex flex-wrap gap-6 justify-center mb-10">
                 <a
-                  href="mailto:your.email@example.com"
+                  href="mailto:soeunpark0806@gmail.com"
                   className="cursor-target flex items-center gap-3 px-6 py-3 bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/30 rounded-lg border transition-all transform hover:scale-105"
                 >
                   <Mail className="w-5 h-5" />
                   <span>Email</span>
                 </a>
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/boriborisal"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="cursor-target flex items-center gap-3 px-6 py-3 bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/30 rounded-lg border transition-all transform hover:scale-105"
@@ -672,15 +672,13 @@ export default function Home() {
                   <Github className="w-5 h-5" />
                   <span>GitHub</span>
                 </a>
-                <a
-                  href="https://linkedin.com/in/yourusername"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => alert('아직 수정중입니다')}
                   className="cursor-target flex items-center gap-3 px-6 py-3 bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/30 rounded-lg border transition-all transform hover:scale-105"
                 >
                   <Linkedin className="w-5 h-5" />
                   <span>LinkedIn</span>
-                </a>
+                </button>
               </div>
 
               <p className="text-green-500/60 text-sm">
