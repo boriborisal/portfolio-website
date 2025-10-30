@@ -610,7 +610,7 @@ export default function Home() {
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>성과: 효율적 협업으로 개발 기간 30% 단축 (10주 → 7주)</span>
+                      <span>성과: Claude Code 및 Cursor 등의 AI 툴로 개발기간 30% 단축 (10주 → 7주)</span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
