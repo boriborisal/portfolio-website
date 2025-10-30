@@ -127,8 +127,8 @@ export default function Home() {
         ]}
         displaySocials={true}
         displayItemNumbering={true}
-        menuButtonColor="#fff"
-        openMenuButtonColor="#fff"
+        menuButtonColor={theme === 'dark' ? '#fff' : '#000'}
+        openMenuButtonColor={theme === 'dark' ? '#fff' : '#000'}
         accentColor="#00ff41"
         changeMenuColorOnOpen={true}
         isFixed={true}
