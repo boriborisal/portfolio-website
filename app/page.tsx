@@ -274,93 +274,6 @@ export default function Home() {
         {/* About Section */}
         <AboutSection theme={theme} />
 
-        {/* Skills Section */}
-        <section id="skills" className={`${theme === 'dark' ? 'bg-black' : 'bg-white'} py-20 px-4 sm:px-6 lg:px-8`}>
-          <div className="max-w-5xl mx-auto">
-            <div className={`${theme === 'dark' ? 'bg-black/40' : 'bg-white'} backdrop-blur-sm border ${theme === 'dark' ? 'border-green-500/20' : 'border-gray-300'} rounded-2xl p-8 sm:p-12 ${theme === 'dark' ? 'shadow-2xl' : ''}`}>
-              <h2 className={`text-4xl sm:text-5xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-8 text-center`}>
-                <span className="text-green-500">〈</span> Tech Stack <span className="text-green-500">/〉</span>
-              </h2>
-
-              {/* Top Logo Loop */}
-              <div className="mb-8 h-20 overflow-hidden">
-                <LogoLoop
-                  logos={techLogos}
-                  speed={120}
-                  direction="left"
-                  logoHeight={48}
-                  gap={40}
-                  pauseOnHover
-                  scaleOnHover
-                  fadeOut={false}
-                  ariaLabel="Technology stack"
-                />
-              </div>
-
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className={`cursor-target ${theme === 'dark' ? 'bg-green-500/5 border-green-500/20 hover:bg-green-500/10 hover:border-green-500/40' : 'bg-gray-100 border-gray-300 hover:bg-gray-200 hover:border-gray-400'} border rounded-xl p-6 transition-all`}>
-                  <div className="flex justify-center mb-4">
-                    <Code2 className={`w-12 h-12 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
-                  </div>
-                  <h3 className={`text-xl font-semibold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-3 text-center`}>Languages</h3>
-                  <ul className={`space-y-2 ${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm`}>
-                    <li>JavaScript / TypeScript</li>
-                    <li>Java / Python</li>
-                    <li>HTML / CSS</li>
-                  </ul>
-                </div>
-                <div className={`cursor-target ${theme === 'dark' ? 'bg-green-500/5 border-green-500/20 hover:bg-green-500/10 hover:border-green-500/40' : 'bg-gray-100 border-gray-300 hover:bg-gray-200 hover:border-gray-400'} border rounded-xl p-6 transition-all`}>
-                  <div className="flex justify-center mb-4">
-                    <Palette className={`w-12 h-12 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
-                  </div>
-                  <h3 className={`text-xl font-semibold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-3 text-center`}>Frontend</h3>
-                  <ul className={`space-y-2 ${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm`}>
-                    <li>React / Next.js</li>
-                    <li>Tailwind CSS</li>
-                    <li>Responsive Design</li>
-                  </ul>
-                </div>
-                <div className={`cursor-target ${theme === 'dark' ? 'bg-green-500/5 border-green-500/20 hover:bg-green-500/10 hover:border-green-500/40' : 'bg-gray-100 border-gray-300 hover:bg-gray-200 hover:border-gray-400'} border rounded-xl p-6 transition-all`}>
-                  <div className="flex justify-center mb-4">
-                    <Cpu className={`w-12 h-12 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
-                  </div>
-                  <h3 className={`text-xl font-semibold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-3 text-center`}>Animation</h3>
-                  <ul className={`space-y-2 ${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm`}>
-                    <li>Framer Motion</li>
-                    <li>CSS Animations</li>
-                  </ul>
-                </div>
-                <div className={`cursor-target ${theme === 'dark' ? 'bg-green-500/5 border-green-500/20 hover:bg-green-500/10 hover:border-green-500/40' : 'bg-gray-100 border-gray-300 hover:bg-gray-200 hover:border-gray-400'} border rounded-xl p-6 transition-all`}>
-                  <div className="flex justify-center mb-4">
-                    <Database className={`w-12 h-12 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
-                  </div>
-                  <h3 className={`text-xl font-semibold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-3 text-center`}>Tools & Workflow</h3>
-                  <ul className={`space-y-2 ${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm`}>
-                    <li>Git / GitHub</li>
-                    <li>Cursor / Claude Code</li>
-                    <li>Figma</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Bottom Logo Loop */}
-              <div className="mt-8 h-20 overflow-hidden">
-                <LogoLoop
-                  logos={techLogos}
-                  speed={120}
-                  direction="right"
-                  logoHeight={48}
-                  gap={40}
-                  pauseOnHover
-                  scaleOnHover
-                  fadeOut={false}
-                  ariaLabel="Technology stack"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Awards Section */}
         <section id="awards" className={`${theme === 'dark' ? 'bg-black' : 'bg-white'} py-20 px-4 sm:px-6 lg:px-8`}>
           <div className="max-w-5xl mx-auto">
@@ -635,6 +548,93 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Skills Section */}
+        <section id="skills" className={`${theme === 'dark' ? 'bg-black' : 'bg-white'} py-20 px-4 sm:px-6 lg:px-8`}>
+          <div className="max-w-5xl mx-auto">
+            <div className={`${theme === 'dark' ? 'bg-black/40' : 'bg-white'} backdrop-blur-sm border ${theme === 'dark' ? 'border-green-500/20' : 'border-gray-300'} rounded-2xl p-8 sm:p-12 ${theme === 'dark' ? 'shadow-2xl' : ''}`}>
+              <h2 className={`text-4xl sm:text-5xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-8 text-center`}>
+                <span className="text-green-500">〈</span> Tech Stack <span className="text-green-500">/〉</span>
+              </h2>
+
+              {/* Top Logo Loop */}
+              <div className="mb-8 h-20 overflow-hidden">
+                <LogoLoop
+                  logos={techLogos}
+                  speed={120}
+                  direction="left"
+                  logoHeight={48}
+                  gap={40}
+                  pauseOnHover
+                  scaleOnHover
+                  fadeOut={false}
+                  ariaLabel="Technology stack"
+                />
+              </div>
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className={`cursor-target ${theme === 'dark' ? 'bg-green-500/5 border-green-500/20 hover:bg-green-500/10 hover:border-green-500/40' : 'bg-gray-100 border-gray-300 hover:bg-gray-200 hover:border-gray-400'} border rounded-xl p-6 transition-all`}>
+                  <div className="flex justify-center mb-4">
+                    <Code2 className={`w-12 h-12 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
+                  </div>
+                  <h3 className={`text-xl font-semibold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-3 text-center`}>Languages</h3>
+                  <ul className={`space-y-2 ${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm`}>
+                    <li>JavaScript / TypeScript</li>
+                    <li>Java / Python</li>
+                    <li>HTML / CSS</li>
+                  </ul>
+                </div>
+                <div className={`cursor-target ${theme === 'dark' ? 'bg-green-500/5 border-green-500/20 hover:bg-green-500/10 hover:border-green-500/40' : 'bg-gray-100 border-gray-300 hover:bg-gray-200 hover:border-gray-400'} border rounded-xl p-6 transition-all`}>
+                  <div className="flex justify-center mb-4">
+                    <Palette className={`w-12 h-12 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
+                  </div>
+                  <h3 className={`text-xl font-semibold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-3 text-center`}>Frontend</h3>
+                  <ul className={`space-y-2 ${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm`}>
+                    <li>React / Next.js</li>
+                    <li>Tailwind CSS</li>
+                    <li>Responsive Design</li>
+                  </ul>
+                </div>
+                <div className={`cursor-target ${theme === 'dark' ? 'bg-green-500/5 border-green-500/20 hover:bg-green-500/10 hover:border-green-500/40' : 'bg-gray-100 border-gray-300 hover:bg-gray-200 hover:border-gray-400'} border rounded-xl p-6 transition-all`}>
+                  <div className="flex justify-center mb-4">
+                    <Cpu className={`w-12 h-12 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
+                  </div>
+                  <h3 className={`text-xl font-semibold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-3 text-center`}>Animation</h3>
+                  <ul className={`space-y-2 ${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm`}>
+                    <li>Framer Motion</li>
+                    <li>CSS Animations</li>
+                  </ul>
+                </div>
+                <div className={`cursor-target ${theme === 'dark' ? 'bg-green-500/5 border-green-500/20 hover:bg-green-500/10 hover:border-green-500/40' : 'bg-gray-100 border-gray-300 hover:bg-gray-200 hover:border-gray-400'} border rounded-xl p-6 transition-all`}>
+                  <div className="flex justify-center mb-4">
+                    <Database className={`w-12 h-12 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
+                  </div>
+                  <h3 className={`text-xl font-semibold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-3 text-center`}>Tools & Workflow</h3>
+                  <ul className={`space-y-2 ${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm`}>
+                    <li>Git / GitHub</li>
+                    <li>Cursor / Claude Code</li>
+                    <li>Figma</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Bottom Logo Loop */}
+              <div className="mt-8 h-20 overflow-hidden">
+                <LogoLoop
+                  logos={techLogos}
+                  speed={120}
+                  direction="right"
+                  logoHeight={48}
+                  gap={40}
+                  pauseOnHover
+                  scaleOnHover
+                  fadeOut={false}
+                  ariaLabel="Technology stack"
+                />
               </div>
             </div>
           </div>
