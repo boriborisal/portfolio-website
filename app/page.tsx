@@ -116,8 +116,8 @@ export default function Home() {
           { label: 'Home', link: '/', ariaLabel: 'Go to homepage' },
           { label: 'About', link: '#about', ariaLabel: 'Go to about section' },
           { label: 'Skills', link: '#skills', ariaLabel: 'Go to skills section' },
-          { label: 'Awards', link: '#awards', ariaLabel: 'Go to awards section' },
           { label: 'Projects', link: '#projects', ariaLabel: 'Go to projects section' },
+          { label: 'Awards', link: '#awards', ariaLabel: 'Go to awards section' },
           { label: 'Contact', link: '#contact', ariaLabel: 'Go to contact section' },
         ]}
         socialItems={[
@@ -273,105 +273,6 @@ export default function Home() {
 
         {/* About Section */}
         <AboutSection theme={theme} />
-
-        {/* Awards Section */}
-        <section id="awards" className={`${theme === 'dark' ? 'bg-black' : 'bg-white'} py-20 px-4 sm:px-6 lg:px-8`}>
-          <div className="max-w-5xl mx-auto">
-            <h2 className={`text-4xl sm:text-5xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-12 text-center`}>
-              <span className="text-green-500">〈</span> Awards <span className="text-green-500">/〉</span>
-            </h2>
-
-            <div className="space-y-6">
-              {/* Award 1 */}
-              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
-                <div className="flex items-start gap-4">
-                  <div className={`flex-shrink-0 w-12 h-12 ${theme === 'dark' ? 'bg-green-500/10' : 'bg-green-100'} rounded-lg flex items-center justify-center`}>
-                    <Trophy className={`w-6 h-6 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                      <h3 className={`text-xl sm:text-2xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>서울 AI 이노베이션 챌린지 2024 (아이디어톤)</h3>
-                      <span className={`${theme === 'dark' ? 'text-green-400/60' : 'text-green-500'} text-sm mt-1 sm:mt-0`}>장려상</span>
-                    </div>
-
-                    <div className={`flex items-center gap-2 ${theme === 'dark' ? 'text-green-300/70' : 'text-gray-900'} text-sm mb-4`}>
-                      <Calendar className="w-4 h-4" />
-                      <span>2024.06.28</span>
-                    </div>
-
-                    <div className="space-y-3">
-                      <div>
-                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 flex items-center gap-2`}>
-                          <Lightbulb className="w-4 h-4" />
-                          프로젝트
-                        </h4>
-                        <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} pl-6`}>범-드론 - AI 비전 기술과 드론을 결합하여 농작물 피해를 일으키는 멧돼지를 감지하는 시스템</p>
-                      </div>
-
-                      <div>
-                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1`}>배운 점</h4>
-                        <p className={`${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm pl-6`}>AI 비전 기술과 드론을 결합한 사회 문제 해결 아이디어 기획 경험. 사회 문제를 기술적 관점에서 분석하고, 제한된 시간 안에 실현 가능한 솔루션을 도출하여 효과적으로 발표하는 능력 향상.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Award 2 */}
-              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
-                <div className="flex items-start gap-4">
-                  <div className={`flex-shrink-0 w-12 h-12 ${theme === 'dark' ? 'bg-green-500/10' : 'bg-green-100'} rounded-lg flex items-center justify-center`}>
-                    <Trophy className={`w-6 h-6 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                      <h3 className={`text-xl sm:text-2xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>학생 창업마라톤 2025</h3>
-                      <span className={`${theme === 'dark' ? 'text-green-400/60' : 'text-green-500'} text-sm mt-1 sm:mt-0`}>장려상</span>
-                    </div>
-
-                    <div className={`flex items-center gap-2 ${theme === 'dark' ? 'text-green-300/70' : 'text-gray-900'} text-sm mb-4`}>
-                      <Calendar className="w-4 h-4" />
-                      <span>2025.07.04</span>
-                      <span className={theme === 'dark' ? 'text-green-400/40' : 'text-gray-500'}>•</span>
-                      <span>과학기술대학교/삼육보건대학교 주최</span>
-                    </div>
-
-                    <div className="space-y-3">
-                      <div>
-                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 flex items-center gap-2`}>
-                          <Lightbulb className="w-4 h-4" />
-                          서비스
-                        </h4>
-                        <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} pl-6`}>마마케어 - 임산부를 위한 맞춤형 헬스케어 어플리케이션</p>
-                      </div>
-
-                      <div>
-                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 flex items-center gap-2`}>
-                          <Users className="w-4 h-4" />
-                          역할
-                        </h4>
-                        <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} pl-6`}>팀장, UI/UX 디자인, 프론트엔드 개발</p>
-                      </div>
-
-                      <div>
-                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1`}>사용 기술</h4>
-                        <div className="flex flex-wrap gap-2 pl-6">
-                          <span className={`px-3 py-1 ${theme === 'dark' ? 'bg-green-500/10 border-green-500/30 text-green-400' : 'bg-green-100 border-green-300 text-green-500'} border rounded text-sm`}>Android Studio / Java</span>
-                          <span className={`px-3 py-1 ${theme === 'dark' ? 'bg-green-500/10 border-green-500/30 text-green-400' : 'bg-green-100 border-green-300 text-green-500'} border rounded text-sm`}>Figma</span>
-                        </div>
-                      </div>
-
-                      <div>
-                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1`}>배운 점</h4>
-                        <p className={`${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm pl-6`}>4명 팀 리더로서 9개월 프로젝트 완수. 임산부 10명 직접 인터뷰하여 '글자가 작다', '메뉴가 복잡하다'는 구체적 불편 사항 도출 후, 폰트 120% 확대 및 3탭 구조로 재설계. Notion 기반 투명한 작업 관리와 효율적 협업으로 개발 기간 30% 단축 (10주 → 7주).</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Projects Section */}
         <section id="projects" className={`${theme === 'dark' ? 'bg-black' : 'bg-white'} py-20 px-4 sm:px-6 lg:px-8`}>
@@ -546,6 +447,105 @@ export default function Home() {
                         <Image src={`/images/mamacare-${i}.jpg`} alt={`마마케어 Screenshot ${i}`} fill className="object-cover" sizes="(max-width: 768px) 50vw, 25vw" />
                       </div>
                     ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Awards Section */}
+        <section id="awards" className={`${theme === 'dark' ? 'bg-black' : 'bg-white'} py-20 px-4 sm:px-6 lg:px-8`}>
+          <div className="max-w-5xl mx-auto">
+            <h2 className={`text-4xl sm:text-5xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-12 text-center`}>
+              <span className="text-green-500">〈</span> Awards <span className="text-green-500">/〉</span>
+            </h2>
+
+            <div className="space-y-6">
+              {/* Award 1 */}
+              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
+                <div className="flex items-start gap-4">
+                  <div className={`flex-shrink-0 w-12 h-12 ${theme === 'dark' ? 'bg-green-500/10' : 'bg-green-100'} rounded-lg flex items-center justify-center`}>
+                    <Trophy className={`w-6 h-6 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+                      <h3 className={`text-xl sm:text-2xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>서울 AI 이노베이션 챌린지 2024 (아이디어톤)</h3>
+                      <span className={`${theme === 'dark' ? 'text-green-400/60' : 'text-green-500'} text-sm mt-1 sm:mt-0`}>장려상</span>
+                    </div>
+
+                    <div className={`flex items-center gap-2 ${theme === 'dark' ? 'text-green-300/70' : 'text-gray-900'} text-sm mb-4`}>
+                      <Calendar className="w-4 h-4" />
+                      <span>2024.06.28</span>
+                    </div>
+
+                    <div className="space-y-3">
+                      <div>
+                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 flex items-center gap-2`}>
+                          <Lightbulb className="w-4 h-4" />
+                          프로젝트
+                        </h4>
+                        <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} pl-6`}>범-드론 - AI 비전 기술과 드론을 결합하여 농작물 피해를 일으키는 멧돼지를 감지하는 시스템</p>
+                      </div>
+
+                      <div>
+                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1`}>배운 점</h4>
+                        <p className={`${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm pl-6`}>AI 비전 기술과 드론을 결합한 사회 문제 해결 아이디어 기획 경험. 사회 문제를 기술적 관점에서 분석하고, 제한된 시간 안에 실현 가능한 솔루션을 도출하여 효과적으로 발표하는 능력 향상.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Award 2 */}
+              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
+                <div className="flex items-start gap-4">
+                  <div className={`flex-shrink-0 w-12 h-12 ${theme === 'dark' ? 'bg-green-500/10' : 'bg-green-100'} rounded-lg flex items-center justify-center`}>
+                    <Trophy className={`w-6 h-6 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+                      <h3 className={`text-xl sm:text-2xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>학생 창업마라톤 2025</h3>
+                      <span className={`${theme === 'dark' ? 'text-green-400/60' : 'text-green-500'} text-sm mt-1 sm:mt-0`}>장려상</span>
+                    </div>
+
+                    <div className={`flex items-center gap-2 ${theme === 'dark' ? 'text-green-300/70' : 'text-gray-900'} text-sm mb-4`}>
+                      <Calendar className="w-4 h-4" />
+                      <span>2025.07.04</span>
+                      <span className={theme === 'dark' ? 'text-green-400/40' : 'text-gray-500'}>•</span>
+                      <span>과학기술대학교/삼육보건대학교 주최</span>
+                    </div>
+
+                    <div className="space-y-3">
+                      <div>
+                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 flex items-center gap-2`}>
+                          <Lightbulb className="w-4 h-4" />
+                          서비스
+                        </h4>
+                        <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} pl-6`}>마마케어 - 임산부를 위한 맞춤형 헬스케어 어플리케이션</p>
+                      </div>
+
+                      <div>
+                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 flex items-center gap-2`}>
+                          <Users className="w-4 h-4" />
+                          역할
+                        </h4>
+                        <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} pl-6`}>팀장, UI/UX 디자인, 프론트엔드 개발</p>
+                      </div>
+
+                      <div>
+                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1`}>사용 기술</h4>
+                        <div className="flex flex-wrap gap-2 pl-6">
+                          <span className={`px-3 py-1 ${theme === 'dark' ? 'bg-green-500/10 border-green-500/30 text-green-400' : 'bg-green-100 border-green-300 text-green-500'} border rounded text-sm`}>Android Studio / Java</span>
+                          <span className={`px-3 py-1 ${theme === 'dark' ? 'bg-green-500/10 border-green-500/30 text-green-400' : 'bg-green-100 border-green-300 text-green-500'} border rounded text-sm`}>Figma</span>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1`}>배운 점</h4>
+                        <p className={`${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm pl-6`}>4명 팀 리더로서 9개월 프로젝트 완수. 임산부 10명 직접 인터뷰하여 '글자가 작다', '메뉴가 복잡하다'는 구체적 불편 사항 도출 후, 폰트 120% 확대 및 3탭 구조로 재설계. Notion 기반 투명한 작업 관리와 효율적 협업으로 개발 기간 30% 단축 (10주 → 7주).</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
