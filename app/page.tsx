@@ -450,6 +450,77 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+
+              {/* Project 3: Cafe Flow */}
+              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
+                <h3 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-4`}>Cafe Flow</h3>
+                <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-base mb-4`}>올인원 집중 관리 웹 애플리케이션</p>
+
+                {/* Info Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-4">
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>타입</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>웹</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>프론트엔드 규모</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>개인 프로젝트</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>참여도</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>프론트 100%</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>디자인 100%</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>라이브러리</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Chart.js</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Spotify Web API</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Web Audio API</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>프레임워크</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Vanilla JavaScript</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>(ES6+)</p>
+                  </div>
+                </div>
+
+                {/* 개발 기간 */}
+                <div className="mb-4">
+                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>개발 기간</h4>
+                  <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm`}>2025.10 ~ 2025.11 (4주)</p>
+                </div>
+
+                {/* 작업 기여도 */}
+                <div className="mb-3">
+                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>작업 기여도</h4>
+                  <ul className={`space-y-1 ${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-lg`}>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>Vanilla JavaScript로 뽀모도로 타이머, 음악 플레이어, 투두리스트, 캘린더 통합 구현</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>SVG 원형 프로그레스 바 및 Chart.js 활용한 생산성 통계 시각화</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>Spotify OAuth 2.0 인증 및 API 연동으로 음악 재생 기능 구현</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>LocalStorage 기반 데이터 관리 및 HTML Sanitization으로 XSS 방지</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>글래스모피즘 디자인 및 완전 반응형 레이아웃 (모바일/태블릿/데스크톱)</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>키보드 단축키 구현으로 UX 개선</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </section>
