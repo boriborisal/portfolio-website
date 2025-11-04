@@ -1,3 +1,28 @@
+/**
+ * Portfolio Home Page
+ *
+ * 박소은 포트폴리오 웹사이트의 메인 페이지 컴포넌트입니다.
+ * Next.js App Router를 사용하며, 다크/라이트 테마 전환을 지원합니다.
+ *
+ * 주요 섹션:
+ * - Hero: 인사말, 타이핑 효과, 3D 카드 스와핑 애니메이션
+ * - About: 자기소개, 가치관, 성장 마인드셋 (스크롤 활성화 카드)
+ * - Projects: Cafe Flow, 포트폴리오, 마마케어 프로젝트 상세 정보
+ * - Awards: 수상 경력 및 대회 참가 이력
+ * - Skills: 기술 스택 (Languages, Frontend, Animation, Tools)
+ * - Contact: 연락처 및 소셜 링크
+ *
+ * 기술 스택:
+ * - Next.js 16.0.0 (App Router, Turbopack)
+ * - React 19 (Client Components)
+ * - Tailwind CSS (스타일링)
+ * - GSAP (카드 애니메이션)
+ * - Three.js (3D 효과)
+ * - Framer Motion (페이지 전환)
+ * - Lucide React (아이콘)
+ * - React Icons (기술 로고)
+ */
+
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -6,87 +31,145 @@ import Image from 'next/image';
 import { Github, Linkedin, Mail, ExternalLink, Code2, Palette, Database, Cpu, Trophy, Calendar, Users, Lightbulb } from 'lucide-react';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiJavascript, SiHtml5, SiCss3, SiPython, SiFramer, SiGit, SiGithub, SiFigma } from 'react-icons/si';
 
+/**
+ * Dynamic Imports with SSR Disabled
+ *
+ * 모든 인터랙티브 컴포넌트는 클라이언트 사이드에서만 렌더링됩니다.
+ * SSR을 비활성화하는 이유:
+ * 1. Canvas/WebGL 기반 애니메이션 (Three.js, GSAP)
+ * 2. window/document 객체에 직접 접근하는 컴포넌트
+ * 3. 마우스/터치 이벤트 리스너가 필요한 인터랙션
+ * 4. 초기 로딩 성능 최적화 (애니메이션 코드는 클라이언트에서만 로드)
+ */
+
+// 터미널 글리치 효과 배경 (다크 모드)
 const FaultyTerminal = dynamic(() => import('@/components/FaultyTerminal'), {
   ssr: false,
 });
 
+// 픽셀 폭발 효과 (사용하지 않음 - 추후 제거 예정)
 const PixelBlast = dynamic(() => import('@/components/PixelBlast'), {
   ssr: false,
 });
 
+// 글자 글리치 효과 배경 (라이트 모드)
 const LetterGlitch = dynamic(() => import('@/components/LetterGlitch'), {
   ssr: false,
 });
 
+// 클릭 시 스파크 효과
 const ClickSpark = dynamic(() => import('@/components/ClickSpark'), {
   ssr: false,
 });
 
+// 커서 따라다니는 효과
 const CursorFollow = dynamic(() => import('@/components/CursorFollow'), {
   ssr: false,
 });
 
+// 암호 해독 텍스트 효과 (사용하지 않음 - 추후 제거 예정)
 const DecryptedText = dynamic(() => import('@/components/DecryptedText'), {
   ssr: false,
 });
 
+// 3D 틸트 카드 (마우스 움직임에 반응)
 const TiltedCard = dynamic(() => import('@/components/TiltedCard'), {
   ssr: false,
 });
 
+// 색상 그리드 배경 (사용하지 않음 - 추후 제거 예정)
 const ChromaGrid = dynamic(() => import('@/components/ChromaGrid'), {
   ssr: false,
 });
 
+// About 섹션 (스크롤 활성화 카드)
 const AboutSection = dynamic(() => import('@/components/AboutSection'), {
   ssr: false,
 });
 
+// 좌측 네비게이션 메뉴 (햄버거 메뉴)
 const StaggeredMenu = dynamic(() => import('@/components/StaggeredMenu'), {
   ssr: false,
 });
 
+// 카드 스와핑 애니메이션 컴포넌트
 const CardSwap = dynamic(() => import('@/components/CardSwap'), {
   ssr: false,
 });
 
+// CardSwap의 개별 Card 컴포넌트
 const Card = dynamic(() => import('@/components/CardSwap').then(mod => mod.Card), {
   ssr: false,
 });
 
+// 타이핑 효과 텍스트
 const TextType = dynamic(() => import('@/components/TextType'), {
   ssr: false,
 });
 
+// 기술 로고 무한 루프 애니메이션
 const LogoLoop = dynamic(() => import('@/components/LogoLoop'), {
   ssr: false,
 });
 
+// 이미지 모달 (프로젝트 스크린샷 확대)
 const ImageModal = dynamic(() => import('@/components/ImageModal'), {
   ssr: false,
 });
 
+// 스크롤 스택 효과 (사용하지 않음 - 추후 제거 예정)
 const ScrollStack = dynamic(() => import('@/components/ScrollStack'), {
   ssr: false,
 });
 
+// ScrollStack의 개별 아이템 컴포넌트
 const ScrollStackItem = dynamic(() => import('@/components/ScrollStack').then(mod => mod.ScrollStackItem), {
   ssr: false,
 });
 
+/**
+ * Home 페이지 컴포넌트
+ *
+ * 포트폴리오의 모든 섹션을 포함하는 메인 페이지입니다.
+ */
 export default function Home() {
+  /**
+   * modalImage: 현재 모달에서 표시 중인 이미지 정보
+   * { src: string, alt: string } 형태의 객체
+   * null이면 모달이 닫힌 상태
+   */
   const [modalImage, setModalImage] = useState(null);
-  const [theme, setTheme] = useState('dark'); // 'dark' or 'light'
 
+  /**
+   * theme: 현재 테마 모드
+   * 'dark' 또는 'light' 값을 가짐
+   * 기본값은 'dark'
+   */
+  const [theme, setTheme] = useState('dark');
+
+  /**
+   * 테마 토글 함수
+   * StaggeredMenu의 테마 전환 버튼에서 호출됨
+   */
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
+  /**
+   * 테마 변경 시 document.body에 스타일 적용
+   * - backgroundColor: 전체 배경 색상 변경
+   * - className: 'dark' 또는 'light' 클래스를 body에 추가 (globals.css에서 사용)
+   */
   useEffect(() => {
     document.body.style.backgroundColor = theme === 'dark' ? 'black' : 'white';
     document.body.className = theme;
   }, [theme]);
 
+  /**
+   * 기술 스택 로고 배열
+   * LogoLoop 컴포넌트에서 무한 루프 애니메이션으로 표시됨
+   * 각 항목은 { node: React 아이콘 컴포넌트, title: 기술 이름 } 형태
+   */
   const techLogos = [
     { node: <SiJavascript className="w-12 h-12 text-green-400" />, title: "JavaScript" },
     { node: <SiTypescript className="w-12 h-12 text-green-400" />, title: "TypeScript" },
@@ -102,16 +185,48 @@ export default function Home() {
     { node: <SiFigma className="w-12 h-12 text-green-400" />, title: "Figma" },
   ];
 
+  /**
+   * 메인 렌더링
+   *
+   * 구조:
+   * 1. CursorFollow: 전역 커서 효과 (페이지 전체)
+   * 2. ClickSpark: 클릭 시 스파크 효과 래퍼
+   * 3. StaggeredMenu: 좌측 햄버거 네비게이션 메뉴
+   * 4. Hero Section: 첫 화면 (인사말 + 카드 스와핑)
+   * 5. About Section: 자기소개 (AboutSection 컴포넌트)
+   * 6. Projects Section: 프로젝트 목록
+   * 7. Awards Section: 수상 경력
+   * 8. Skills Section: 기술 스택
+   * 9. Contact Section: 연락처
+   * 10. ImageModal: 이미지 모달 (전역)
+   */
   return (
     <>
+      {/* 커서 따라다니는 효과 (전역) */}
       <CursorFollow />
+
+      {/* 클릭 시 스파크 효과 래퍼 */}
       <ClickSpark sparkColor="#ffffff" sparkSize={10} sparkRadius={15} sparkCount={8}>
         <div className={`relative min-h-screen ${theme === 'dark' ? 'bg-black' : 'bg-white'}`}>
-        {/* Navigation Menu */}
+
+        {/**
+         * Navigation Menu (StaggeredMenu)
+         *
+         * 좌측에 고정된 햄버거 메뉴로, 다음 기능을 제공:
+         * - 섹션 간 네비게이션 (Home, About, Skills, Projects, Awards, Contact)
+         * - 소셜 링크 (GitHub, LinkedIn, Twitter)
+         * - 테마 토글 버튼 (다크/라이트 모드 전환)
+         *
+         * 주요 Props:
+         * - position: 'left' (왼쪽 고정)
+         * - colors: 그라데이션 색상 배열 (녹색 계열)
+         * - items: 메뉴 아이템 배열 (label, link, ariaLabel)
+         * - theme/onThemeToggle: 테마 관리
+         */}
         {/* @ts-ignore */}
         <StaggeredMenu
         position="left"
-        colors={['#a7ef9e', '#00ff41', '#10b981', '#059669']}
+        colors={['#a7ef9e', '#00ff41', '#10b981', '#059669']}  // 녹색 계열 그라데이션
         items={[
           { label: 'Home', link: '/', ariaLabel: 'Go to homepage' },
           { label: 'About', link: '#about', ariaLabel: 'Go to about section' },
@@ -125,82 +240,126 @@ export default function Home() {
           { label: 'LinkedIn', link: 'https://linkedin.com/in/yourusername' },
           { label: 'Twitter', link: 'https://twitter.com/yourusername' },
         ]}
-        displaySocials={true}
-        displayItemNumbering={true}
+        displaySocials={true}              // 소셜 링크 표시
+        displayItemNumbering={true}        // 메뉴 아이템 번호 표시
         menuButtonColor={theme === 'dark' ? '#fff' : '#000'}
         openMenuButtonColor={theme === 'dark' ? '#fff' : '#000'}
-        accentColor="#00ff41"
-        changeMenuColorOnOpen={true}
-        isFixed={true}
-        logoUrl={undefined}
-        theme={theme}
-        onThemeToggle={toggleTheme}
+        accentColor="#00ff41"              // 강조 색상 (녹색)
+        changeMenuColorOnOpen={true}       // 메뉴 열릴 때 색상 변경
+        isFixed={true}                     // 스크롤해도 고정
+        logoUrl={undefined}                // 로고 없음
+        theme={theme}                      // 현재 테마 전달
+        onThemeToggle={toggleTheme}        // 테마 토글 함수 전달
       />
 
-      {/* Hero Section with Background */}
+      {/**
+       * Hero Section
+       *
+       * 포트폴리오의 첫 화면으로, 다음 요소로 구성:
+       * 1. 배경: FaultyTerminal (다크 모드) 또는 LetterGlitch (라이트 모드)
+       * 2. 왼쪽: 인사말 텍스트 + TextType 타이핑 효과
+       * 3. 오른쪽: CardSwap (3개의 카드가 순환하는 3D 애니메이션)
+       *
+       * 레이아웃:
+       * - lg (1024px) 이상: 2열 그리드 (텍스트 | 카드)
+       * - lg 미만: 1열 스택 (텍스트 위, 카드 아래)
+       */}
       <section className={`relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden ${theme === 'dark' ? 'bg-black' : 'bg-white'}`}>
-        {/* Background - FaultyTerminal for dark mode, LetterGlitch for light mode */}
+        {/**
+         * 배경 애니메이션
+         *
+         * 다크 모드: FaultyTerminal
+         * - 터미널 스타일의 매트릭스 효과
+         * - 마우스 반응형 (mouseReact: true)
+         * - 녹색 계열 틴트 (#a7ef9e)
+         *
+         * 라이트 모드: LetterGlitch
+         * - 글자 글리치 효과
+         * - 중앙 비네팅 효과
+         * - 흰색 배경
+         */}
         <div className="absolute inset-0 z-[1]">
           {theme === 'dark' ? (
             <FaultyTerminal
-              scale={1.4}
-              gridMul={[2, 1]}
-              digitSize={1.2}
-              timeScale={0.5}
-              pause={false}
-              scanlineIntensity={0.5}
-              glitchAmount={1}
-              flickerAmount={1}
-              noiseAmp={1}
-              chromaticAberration={0}
-              dither={0}
-              curvature={0.1}
-              tint="#a7ef9e"
-              backgroundColor="#000000"
-              mouseReact={true}
-              mouseStrength={0.5}
-              pageLoadAnimation={false}
-              brightness={0.6}
+              scale={1.4}                      // 배경 크기 확대
+              gridMul={[2, 1]}                 // 그리드 배율
+              digitSize={1.2}                  // 숫자 크기
+              timeScale={0.5}                  // 애니메이션 속도
+              pause={false}                    // 일시정지 없음
+              scanlineIntensity={0.5}          // 스캔라인 강도
+              glitchAmount={1}                 // 글리치 양
+              flickerAmount={1}                // 깜빡임 양
+              noiseAmp={1}                     // 노이즈 진폭
+              chromaticAberration={0}          // 색수차 없음
+              dither={0}                       // 디더링 없음
+              curvature={0.1}                  // CRT 곡률 효과
+              tint="#a7ef9e"                   // 녹색 틴트
+              backgroundColor="#000000"        // 검정 배경
+              mouseReact={true}                // 마우스 반응 활성화
+              mouseStrength={0.5}              // 마우스 반응 강도
+              pageLoadAnimation={false}        // 페이지 로드 애니메이션 비활성화
+              brightness={0.6}                 // 밝기
             />
           ) : (
             <LetterGlitch
-              glitchSpeed={50}
-              centerVignette={true}
-              outerVignette={false}
-              smooth={true}
-              backgroundColor="#ffffff"
-              vignetteColor="255,255,255"
-              vignettePosition="40% 50%"
+              glitchSpeed={50}                 // 글리치 속도
+              centerVignette={true}            // 중앙 비네팅 활성화
+              outerVignette={false}            // 외곽 비네팅 비활성화
+              smooth={true}                    // 부드러운 전환
+              backgroundColor="#ffffff"        // 흰색 배경
+              vignetteColor="255,255,255"      // 비네팅 색상 (RGB)
+              vignettePosition="40% 50%"       // 비네팅 위치
             />
           )}
         </div>
 
-        {/* Hero Content */}
+        {/* Hero 콘텐츠 (배경 위에 표시, z-10) */}
         <div className="relative z-10 w-full">
           <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
             <div className="grid lg:grid-cols-2 gap-0 items-center">
-              {/* Left: Text */}
+
+              {/**
+               * 왼쪽: 인사말 텍스트
+               *
+               * 구조:
+               * - "Hello," + TextType 타이핑 효과 ("world!", "HTML!", "React!", etc.)
+               * - "I'm FrontEnd Developer"
+               * - "Park Soeun" (다크 모드: 노란색, 라이트 모드: 녹색)
+               */}
               <div className="space-y-6" style={{ marginLeft: '20px' }}>
                 <h1 className={`text-[58px] sm:text-[70px] lg:text-[82px] font-black ${theme === 'dark' ? 'text-white' : 'text-gray-900'} leading-tight`}>
-                  Hello,<TextType
+                  Hello,
+                  {/* 타이핑 효과: world, HTML, React, JS, FE가 순환 */}
+                  <TextType
                     text={['world!', 'HTML!', 'React!', 'JS!', 'FE!']}
                     as="span"
-                    typingSpeed={100}
-                    deletingSpeed={50}
-                    pauseDuration={2000}
-                    loop={true}
-                    className="text-green-400"
-                    showCursor={true}
-                    cursorCharacter="|"
+                    typingSpeed={100}            // 타이핑 속도 (ms)
+                    deletingSpeed={50}           // 삭제 속도 (ms)
+                    pauseDuration={2000}         // 단어 표시 유지 시간 (ms)
+                    loop={true}                  // 무한 반복
+                    className="text-green-400"   // 녹색 텍스트
+                    showCursor={true}            // 커서 표시
+                    cursorCharacter="|"          // 커서 문자
                     cursorClassName="text-green-400"
                   />
                   <br />
                   I'm FrontEnd Developer<br />
+                  {/* 이름 색상: 다크 모드 = 노란색, 라이트 모드 = 녹색 */}
                   <span className={theme === 'dark' ? 'text-yellow-400' : 'text-green-400'}>Park Soeun</span>
                 </h1>
               </div>
 
-              {/* Right: CardSwap */}
+              {/**
+               * 오른쪽: CardSwap 애니메이션
+               *
+               * 3개의 카드가 순환하며 스와핑되는 3D 애니메이션:
+               * 1. React & Next.js (Code2 아이콘, 녹색 테두리)
+               * 2. UI/UX Design (Palette 아이콘, 파란색/녹색 테두리)
+               * 3. Performance (Cpu 아이콘, 보라색/녹색 테두리)
+               *
+               * 각 카드는 터미널 스타일 헤더를 가지며,
+               * 5초마다 자동으로 순환합니다 (delay: 5000ms)
+               */}
               <div className="flex justify-center lg:justify-end" style={{ marginLeft: '-150px', marginRight: '50px' }}>
                 <CardSwap
                   width={650}
@@ -271,10 +430,34 @@ export default function Home() {
         </div>
       </section>
 
-        {/* About Section */}
+        {/**
+         * About Section
+         *
+         * AboutSection 컴포넌트를 사용하여 자기소개를 표시합니다.
+         * 스크롤에 따라 3개의 카드가 활성화/비활성화되며:
+         * 1. About Me: 개발자가 된 계기와 경험
+         * 2. Work Values: 사용자 중심 사고와 개발 철학
+         * 3. Growth & Learning: 학습 방식과 성장 마인드셋
+         *
+         * 오른쪽에는 TiltedCard (3D 틸트 효과 프로필 카드)가 고정됩니다.
+         */}
         <AboutSection theme={theme} />
 
-        {/* Projects Section */}
+        {/**
+         * Projects Section
+         *
+         * 3개의 주요 프로젝트를 카드 형식으로 표시:
+         * 1. Cafe Flow: 올인원 집중 관리 웹 앱 (Vanilla JS, Firebase)
+         * 2. 포트폴리오: 현재 이 웹사이트 (Next.js, Three.js, GSAP)
+         * 3. 마마케어: 임산부 헬스케어 Android 앱 (Java, 한이음 프로젝트)
+         *
+         * 각 프로젝트는 다음 정보를 포함:
+         * - 타입, 규모, 참여도, 기술 스택
+         * - 개발 기간
+         * - 작업 기여도 (상세 항목)
+         * - 스크린샷 (클릭 시 모달 확대)
+         * - 라이브 데모 링크 (해당되는 경우)
+         */}
         <section id="projects" className={`${theme === 'dark' ? 'bg-black' : 'bg-white'} py-20 px-4 sm:px-6 lg:px-8`}>
           <div className="max-w-6xl mx-auto">
             <h2 className={`text-4xl sm:text-5xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-12 text-center`}>
@@ -567,7 +750,23 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Awards Section */}
+        {/**
+         * Awards Section
+         *
+         * 수상 경력 및 대회 참가 이력을 표시합니다.
+         *
+         * 포함된 수상:
+         * 1. 서울 AI 이노베이션 챌린지 2024 (장려상)
+         *    - 프로젝트: 범-드론 (AI 비전 + 드론)
+         *    - 배운 점: AI 비전 기술과 드론을 결합한 사회 문제 해결
+         *
+         * 2. 학생 창업마라톤 2025 (장려상)
+         *    - 서비스: 마마케어 (임산부 헬스케어 앱)
+         *    - 역할: 팀장, UI/UX 디자인, 프론트엔드 개발
+         *    - 배운 점: 9개월 프로젝트 리더십, 사용자 인터뷰 기반 UX 개선
+         *
+         * 각 수상은 아이콘, 제목, 날짜, 프로젝트/서비스 설명, 배운 점을 포함합니다.
+         */}
         <section id="awards" className={`${theme === 'dark' ? 'bg-black' : 'bg-white'} py-20 px-4 sm:px-6 lg:px-8`}>
           <div className="max-w-5xl mx-auto">
             <h2 className={`text-4xl sm:text-5xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-12 text-center`}>
@@ -575,7 +774,7 @@ export default function Home() {
             </h2>
 
             <div className="space-y-6">
-              {/* Award 1 */}
+              {/* Award 1: 서울 AI 이노베이션 챌린지 2024 */}
               <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
                 <div className="flex items-start gap-4">
                   <div className={`flex-shrink-0 w-12 h-12 ${theme === 'dark' ? 'bg-green-500/10' : 'bg-green-100'} rounded-lg flex items-center justify-center`}>
@@ -666,7 +865,22 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Skills Section */}
+        {/**
+         * Skills Section (Tech Stack)
+         *
+         * 기술 스택을 4개 카테고리로 분류하여 표시:
+         * 1. Languages: JavaScript/TypeScript, Java/Python, HTML/CSS
+         * 2. Frontend: React/Next.js, Tailwind CSS, Responsive Design
+         * 3. Animation: Framer Motion, CSS Animations
+         * 4. Tools & Workflow: Git/GitHub, Cursor/Claude Code, Figma
+         *
+         * 상단/하단에 LogoLoop 컴포넌트로 기술 로고 무한 루프 애니메이션 표시:
+         * - 상단: 왼쪽 방향 (speed: 120)
+         * - 하단: 오른쪽 방향 (speed: 120)
+         * - 호버 시 일시정지 및 확대 효과
+         *
+         * 중앙에는 4개의 카드로 기술 스택을 카테고리별로 표시합니다.
+         */}
         <section id="skills" className={`${theme === 'dark' ? 'bg-black' : 'bg-white'} py-20 px-4 sm:px-6 lg:px-8`}>
           <div className="max-w-5xl mx-auto">
             <div className={`${theme === 'dark' ? 'bg-black/40' : 'bg-white'} backdrop-blur-sm border ${theme === 'dark' ? 'border-green-500/20' : 'border-gray-300'} rounded-2xl p-8 sm:p-12 ${theme === 'dark' ? 'shadow-2xl' : ''}`}>
@@ -674,7 +888,7 @@ export default function Home() {
                 <span className="text-green-500">〈</span> Tech Stack <span className="text-green-500">/〉</span>
               </h2>
 
-              {/* Top Logo Loop */}
+              {/* 상단 로고 루프: 왼쪽 방향 */}
               <div className="mb-8 h-20 overflow-hidden">
                 <LogoLoop
                   logos={techLogos}
@@ -753,7 +967,25 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact Section */}
+        {/**
+         * Contact Section
+         *
+         * 연락처 및 마무리 메시지를 표시하는 마지막 섹션입니다.
+         *
+         * 구성:
+         * 1. 소개 메시지 (4개 단락):
+         *    - 개발자가 된 계기 (게임 파일 분석)
+         *    - 주니어 개발자로서의 강점 (빠른 학습)
+         *    - 협업 및 성장에 대한 열망
+         *    - 가치 제공에 대한 다짐
+         *
+         * 2. 연락처 버튼 (3개):
+         *    - Email: soeunpark0806@gmail.com
+         *    - GitHub: https://github.com/boriborisal
+         *    - LinkedIn: 아직 수정 중 (alert 표시)
+         *
+         * 3. 푸터: © 2024 Park Soeun
+         */}
         <section id="contact" className={`${theme === 'dark' ? 'bg-black' : 'bg-white'} py-20 px-4 sm:px-6 lg:px-8 mb-20`}>
           <div className="max-w-4xl mx-auto">
             <div className={`${theme === 'dark' ? 'bg-black/40' : 'bg-white'} backdrop-blur-sm border ${theme === 'dark' ? 'border-green-500/20' : 'border-gray-300'} rounded-2xl p-8 sm:p-12 ${theme === 'dark' ? 'shadow-2xl' : ''} text-center`}>
@@ -801,7 +1033,22 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Image Modal */}
+        {/**
+         * Image Modal
+         *
+         * 프로젝트 스크린샷을 확대하여 보여주는 모달 컴포넌트입니다.
+         *
+         * 동작:
+         * - Projects 섹션의 스크린샷 이미지를 클릭하면 setModalImage로 이미지 정보 설정
+         * - modalImage가 null이 아니면 모달이 열림 (isOpen: !!modalImage)
+         * - 모달 외부 클릭 또는 닫기 버튼 클릭 시 setModalImage(null)로 모달 닫음
+         *
+         * Props:
+         * - isOpen: 모달 표시 여부
+         * - onClose: 모달 닫기 콜백
+         * - imageSrc: 확대할 이미지 경로
+         * - imageAlt: 이미지 alt 텍스트
+         */}
         <ImageModal
           isOpen={!!modalImage}
           onClose={() => setModalImage(null)}

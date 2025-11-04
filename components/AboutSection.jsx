@@ -1,35 +1,65 @@
+/**
+ * AboutSection 컴포넌트
+ *
+ * 포트폴리오의 About 섹션을 렌더링하는 메인 컴포넌트입니다.
+ * 스크롤에 따라 활성화되는 3개의 카드(About Me, Work Values, Growth & Learning)와
+ * 오른쪽에 고정된 TiltedCard를 포함합니다.
+ *
+ * @param {Object} props - 컴포넌트 props
+ * @param {string} props.theme - 테마 모드 ('dark' 또는 'light')
+ */
+
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 
+// TiltedCard 컴포넌트를 동적으로 import (SSR 비활성화)
+// SSR을 비활성화하여 클라이언트 전용 애니메이션과 인터랙션을 보장합니다
 const TiltedCard = dynamic(() => import('@/components/TiltedCard'), {
   ssr: false,
 });
 
 export default function AboutSection({ theme = 'dark' }) {
+  // 현재 활성화된 카드의 인덱스를 추적하는 state
+  // 스크롤 위치에 따라 0, 1, 2 값을 가집니다
   const [activeCard, setActiveCard] = useState(0);
+
+  // 각 카드에 대한 ref를 생성하여 Intersection Observer로 관찰
   const card0Ref = useRef(null);
   const card1Ref = useRef(null);
   const card2Ref = useRef(null);
 
+  /**
+   * Intersection Observer를 설정하여 스크롤 위치에 따라 활성 카드를 업데이트합니다.
+   *
+   * 동작 방식:
+   * 1. 각 카드가 뷰포트의 중앙 영역(상하 40% 제외)에 들어오면 활성화
+   * 2. 활성화된 카드는 컬러로 표시되고, 비활성 카드는 grayscale 처리
+   * 3. 부드러운 전환 효과를 위해 CSS transition 사용
+   */
   useEffect(() => {
+    // Intersection Observer 생성
+    // 콜백 함수: 관찰 대상 요소가 교차 영역에 들어오거나 나갈 때 실행
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          // 요소가 교차 영역에 들어온 경우
           if (entry.isIntersecting) {
+            // data-card-index 속성에서 카드 인덱스를 가져와 활성 카드로 설정
             const index = parseInt(entry.target.getAttribute('data-card-index'));
             setActiveCard(index);
           }
         });
       },
       {
-        root: null,
-        rootMargin: '-40% 0px -40% 0px',
-        threshold: 0
+        root: null, // viewport를 root로 사용
+        rootMargin: '-40% 0px -40% 0px', // 상하 40% 영역을 제외하여 중앙 20%만 활성 영역으로 설정
+        threshold: 0 // 요소가 조금이라도 교차 영역에 들어오면 트리거
       }
     );
 
+    // 모든 카드 ref를 배열로 모아서 관찰 시작
     const refs = [card0Ref, card1Ref, card2Ref];
     refs.forEach((ref) => {
       if (ref.current) {
@@ -37,6 +67,7 @@ export default function AboutSection({ theme = 'dark' }) {
       }
     });
 
+    // 컴포넌트 언마운트 시 모든 관찰 해제 (메모리 누수 방지)
     return () => {
       refs.forEach((ref) => {
         if (ref.current) {
@@ -44,8 +75,10 @@ export default function AboutSection({ theme = 'dark' }) {
         }
       });
     };
-  }, []);
+  }, []); // 빈 의존성 배열: 컴포넌트 마운트 시 한 번만 실행
 
+  // 테마에 따른 스타일 변수 설정
+  // 다크/라이트 모드에 맞는 배경, 텍스트, 테두리 색상을 동적으로 지정
   const bgColor = theme === 'dark' ? 'bg-black' : 'bg-white';
   const textColor = theme === 'dark' ? 'text-green-400' : 'text-gray-900';
   const borderColor = theme === 'dark' ? 'border-green-500/20' : 'border-gray-300';
@@ -54,16 +87,24 @@ export default function AboutSection({ theme = 'dark' }) {
   return (
     <section id="about" className={`${bgColor} py-20 px-4 sm:px-6 lg:px-8`}>
       <div className="max-w-7xl mx-auto">
-        {/* Section Title */}
+        {/* 섹션 제목: HTML 태그 형식의 About 제목 */}
         <h2 className={`text-4xl sm:text-5xl font-bold ${textColor} mb-12 text-center`}>
           <span className={accentColor}>〈</span> About <span className={accentColor}>/〉</span>
         </h2>
 
-        {/* Grid Layout: Cards + TiltedCard */}
+        {/*
+          그리드 레이아웃: 왼쪽에 3개의 카드, 오른쪽에 TiltedCard
+          md 브레이크포인트 이상에서 2열 그리드로 표시
+        */}
         <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
-          {/* Left: Cards */}
+          {/* 왼쪽: 3개의 About 카드 */}
           <div className="space-y-8">
-            {/* About Me Card */}
+            {/*
+              About Me Card (카드 0)
+              - ref와 data-card-index로 Intersection Observer가 추적
+              - activeCard === 0일 때 컬러, 아닐 때 grayscale 필터 적용
+              - 500ms 애니메이션으로 부드러운 전환
+            */}
             <div
               ref={card0Ref}
               data-card-index="0"
