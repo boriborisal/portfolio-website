@@ -487,11 +487,11 @@ export default function Home() {
                 {/* 개발 기간 */}
                 <div className="mb-4">
                   <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>개발 기간</h4>
-                  <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm`}>2025.10 ~ 2025.11 (4주)</p>
+                  <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm`}>2025.11 (1주)</p>
                 </div>
 
                 {/* 작업 기여도 */}
-                <div className="mb-4">
+                <div className="mb-3">
                   <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>작업 기여도</h4>
                   <ul className={`space-y-1 ${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-lg`}>
                     <li className="flex gap-2">
@@ -519,6 +519,34 @@ export default function Home() {
                       <span>글래스모피즘 디자인 시스템 구축 및 완전 반응형 레이아웃 (모바일/태블릿/데스크톱)</span>
                     </li>
                   </ul>
+                </div>
+
+                {/* 스크린샷 */}
+                <div className="mb-4">
+                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>스크린샷</h4>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <div
+                      className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
+                      style={{ aspectRatio: '16/10' }}
+                      onClick={() => setModalImage({ src: '/images/cafeflow-1.png', alt: 'Cafe Flow Screenshot 1' })}
+                    >
+                      <Image src="/images/cafeflow-1.png" alt="Cafe Flow Screenshot 1" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                    </div>
+                    <div
+                      className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
+                      style={{ aspectRatio: '16/10' }}
+                      onClick={() => setModalImage({ src: '/images/cafeflow-2.png', alt: 'Cafe Flow Screenshot 2' })}
+                    >
+                      <Image src="/images/cafeflow-2.png" alt="Cafe Flow Screenshot 2" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                    </div>
+                    <div
+                      className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
+                      style={{ aspectRatio: '16/10' }}
+                      onClick={() => setModalImage({ src: '/images/cafeflow-3.png', alt: 'Cafe Flow Screenshot 3' })}
+                    >
+                      <Image src="/images/cafeflow-3.png" alt="Cafe Flow Screenshot 3" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                    </div>
+                  </div>
                 </div>
 
                 {/* 링크 */}
