@@ -282,176 +282,7 @@ export default function Home() {
             </h2>
 
             <div className="space-y-6">
-              {/* Project 1: Portfolio Website */}
-              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
-                <h3 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-4`}>포트폴리오</h3>
-
-                {/* Info Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-4">
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>타입</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>웹</p>
-                  </div>
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>프론트엔드 규모</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>개인 프로젝트</p>
-                  </div>
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>참여도</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>프론트 100%</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>디자인 100%</p>
-                  </div>
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>라이브러리</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Three.js</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>GSAP</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Framer Motion</p>
-                  </div>
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>프레임워크</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Next.js</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>React</p>
-                  </div>
-                </div>
-
-                {/* 작업 기여도 */}
-                <div className="mb-3">
-                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>작업 기여도</h4>
-                  <ul className={`space-y-1 ${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-lg`}>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>Next.js App Router 기반 포트폴리오 웹사이트 개발</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>Three.js를 활용한 3D 인터랙션 구현 (마우스 움직임 반응형 오브젝트)</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>GSAP와 Framer Motion으로 페이지 전환 및 스크롤 애니메이션 구현</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>완전 반응형 디자인: 모바일/태블릿/데스크톱 최적화</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>사용자 피드백 수용하여 모바일 애니메이션 간소화 (UX 개선)</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>Lighthouse 성능 90+ 달성 (Performance, Accessibility, SEO)</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* 스크린샷 */}
-                <div>
-                  <h4 className="text-green-400 font-semibold mb-2 text-lg">스크린샷</h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    <div
-                      className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
-                      style={{ aspectRatio: '16/10' }}
-                      onClick={() => setModalImage({ src: '/images/portfolio-1.png', alt: 'Portfolio Screenshot 1' })}
-                    >
-                      <Image src="/images/portfolio-1.png" alt="Portfolio Screenshot 1" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
-                    </div>
-                    <div
-                      className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
-                      style={{ aspectRatio: '16/10' }}
-                      onClick={() => setModalImage({ src: '/images/portfolio-2.png', alt: 'Portfolio Screenshot 2' })}
-                    >
-                      <Image src="/images/portfolio-2.png" alt="Portfolio Screenshot 2" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
-                    </div>
-                    <div
-                      className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
-                      style={{ aspectRatio: '16/10' }}
-                      onClick={() => setModalImage({ src: '/images/portfolio-3.png', alt: 'Portfolio Screenshot 3' })}
-                    >
-                      <Image src="/images/portfolio-3.png" alt="Portfolio Screenshot 3" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Project 2: 마마케어 */}
-              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
-                <h3 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-4`}>마마케어</h3>
-
-                {/* Info Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-4">
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>타입</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>모바일</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>안드로이드</p>
-                  </div>
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>프론트엔드 규모</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>팀 프로젝트</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>한이음</p>
-                  </div>
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>참여도</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>프론트 60%</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>디자인 100%</p>
-                  </div>
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>개발 환경</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Android Studio</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Java</p>
-                  </div>
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>기간</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>2025.03 ~ 2025.11</p>
-                  </div>
-                </div>
-
-                {/* 작업 기여도 */}
-                <div className="mb-3">
-                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>작업 기여도</h4>
-                  <ul className={`space-y-1 ${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-lg`}>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>팀장: 4명 팀원 9개월 프로젝트 일정 관리 및 협업 조율</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>디자인: Figma로 전체 UI 설계 (50+ 화면), 임산부 10명 인터뷰 통해 니즈 반영</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>개발: Android 프론트엔드 주요 화면 구현 및 API 연동 (60%)</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>성과: Claude Code 및 Cursor 등의 AI 툴로 개발기간 30% 단축 (10주 → 7주)</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>수상: 학생 창업마라톤 2025 장려상</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* 스크린샷 */}
-                <div>
-                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>스크린샷</h4>
-                  <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
-                    {[1, 2, 3, 4, 5, 6].map((i) => (
-                      <div
-                        key={i}
-                        className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
-                        style={{ aspectRatio: '9/16' }}
-                        onClick={() => setModalImage({ src: `/images/mamacare-${i}.jpg`, alt: `마마케어 Screenshot ${i}` })}
-                      >
-                        <Image src={`/images/mamacare-${i}.jpg`} alt={`마마케어 Screenshot ${i}`} fill className="object-cover" sizes="(max-width: 768px) 50vw, 25vw" />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Project 3: Cafe Flow */}
+              {/* Project 1: Cafe Flow */}
               <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
                 <h3 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-4`}>Cafe Flow</h3>
                 <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-base mb-4`}>올인원 집중 관리 웹 애플리케이션</p>
@@ -562,6 +393,176 @@ export default function Home() {
                   </a>
                 </div>
               </div>
+
+              {/* Project 2: Portfolio Website */}
+              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
+                <h3 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-4`}>포트폴리오</h3>
+
+                {/* Info Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-4">
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>타입</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>웹</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>프론트엔드 규모</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>개인 프로젝트</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>참여도</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>프론트 100%</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>디자인 100%</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>라이브러리</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Three.js</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>GSAP</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Framer Motion</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>프레임워크</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Next.js</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>React</p>
+                  </div>
+                </div>
+
+                {/* 작업 기여도 */}
+                <div className="mb-3">
+                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>작업 기여도</h4>
+                  <ul className={`space-y-1 ${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-lg`}>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>Next.js App Router 기반 포트폴리오 웹사이트 개발</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>Three.js를 활용한 3D 인터랙션 구현 (마우스 움직임 반응형 오브젝트)</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>GSAP와 Framer Motion으로 페이지 전환 및 스크롤 애니메이션 구현</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>완전 반응형 디자인: 모바일/태블릿/데스크톱 최적화</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>사용자 피드백 수용하여 모바일 애니메이션 간소화 (UX 개선)</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>Lighthouse 성능 90+ 달성 (Performance, Accessibility, SEO)</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* 스크린샷 */}
+                <div>
+                  <h4 className="text-green-400 font-semibold mb-2 text-lg">스크린샷</h4>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <div
+                      className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
+                      style={{ aspectRatio: '16/10' }}
+                      onClick={() => setModalImage({ src: '/images/portfolio-1.png', alt: 'Portfolio Screenshot 1' })}
+                    >
+                      <Image src="/images/portfolio-1.png" alt="Portfolio Screenshot 1" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                    </div>
+                    <div
+                      className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
+                      style={{ aspectRatio: '16/10' }}
+                      onClick={() => setModalImage({ src: '/images/portfolio-2.png', alt: 'Portfolio Screenshot 2' })}
+                    >
+                      <Image src="/images/portfolio-2.png" alt="Portfolio Screenshot 2" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                    </div>
+                    <div
+                      className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
+                      style={{ aspectRatio: '16/10' }}
+                      onClick={() => setModalImage({ src: '/images/portfolio-3.png', alt: 'Portfolio Screenshot 3' })}
+                    >
+                      <Image src="/images/portfolio-3.png" alt="Portfolio Screenshot 3" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Project 3: 마마케어 */}
+              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
+                <h3 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-4`}>마마케어</h3>
+
+                {/* Info Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-4">
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>타입</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>모바일</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>안드로이드</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>프론트엔드 규모</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>팀 프로젝트</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>한이음</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>참여도</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>프론트 60%</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>디자인 100%</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>개발 환경</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Android Studio</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Java</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>기간</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>2025.03 ~ 2025.11</p>
+                  </div>
+                </div>
+
+                {/* 작업 기여도 */}
+                <div className="mb-3">
+                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>작업 기여도</h4>
+                  <ul className={`space-y-1 ${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-lg`}>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>팀장: 4명 팀원 9개월 프로젝트 일정 관리 및 협업 조율</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>디자인: Figma로 전체 UI 설계 (50+ 화면), 임산부 10명 인터뷰 통해 니즈 반영</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>개발: Android 프론트엔드 주요 화면 구현 및 API 연동 (60%)</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>성과: Claude Code 및 Cursor 등의 AI 툴로 개발기간 30% 단축 (10주 → 7주)</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>수상: 학생 창업마라톤 2025 장려상</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* 스크린샷 */}
+                <div>
+                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>스크린샷</h4>
+                  <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
+                    {[1, 2, 3, 4, 5, 6].map((i) => (
+                      <div
+                        key={i}
+                        className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
+                        style={{ aspectRatio: '9/16' }}
+                        onClick={() => setModalImage({ src: `/images/mamacare-${i}.jpg`, alt: `마마케어 Screenshot ${i}` })}
+                      >
+                        <Image src={`/images/mamacare-${i}.jpg`} alt={`마마케어 Screenshot ${i}`} fill className="object-cover" sizes="(max-width: 768px) 50vw, 25vw" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>
