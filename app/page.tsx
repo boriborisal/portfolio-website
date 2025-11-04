@@ -474,8 +474,8 @@ export default function Home() {
                   <div>
                     <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>라이브러리</h4>
                     <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Chart.js</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Spotify Web API</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Web Audio API</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Spotify Embed API</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Firebase</p>
                   </div>
                   <div>
                     <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>프레임워크</h4>
@@ -491,34 +491,47 @@ export default function Home() {
                 </div>
 
                 {/* 작업 기여도 */}
-                <div className="mb-3">
+                <div className="mb-4">
                   <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>작업 기여도</h4>
                   <ul className={`space-y-1 ${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-lg`}>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>Vanilla JavaScript로 뽀모도로 타이머, 음악 플레이어, 투두리스트, 캘린더 통합 구현</span>
+                      <span>Vanilla JavaScript로 뽀모도로 타이머, 투두리스트, 캘린더, 통계 기능 통합 구현 (1,800줄)</span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>SVG 원형 프로그레스 바 및 Chart.js 활용한 생산성 통계 시각화</span>
+                      <span>Firebase Authentication & Firestore 연동으로 여러 기기 간 실시간 데이터 동기화</span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>Spotify OAuth 2.0 인증 및 API 연동으로 음악 재생 기능 구현</span>
+                      <span>HTML5 Audio API 활용한 ASMR 카페 사운드 시스템 구현 (4종 사운드 개별 볼륨 컨트롤)</span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>LocalStorage 기반 데이터 관리 및 HTML Sanitization으로 XSS 방지</span>
+                      <span>SVG 원형 프로그레스 바 및 Chart.js 기반 주간/월간 생산성 통계 시각화</span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>글래스모피즘 디자인 및 완전 반응형 레이아웃 (모바일/태블릿/데스크톱)</span>
+                      <span>LocalStorage + Firebase 하이브리드 저장으로 오프라인/온라인 환경 모두 지원</span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>키보드 단축키 구현으로 UX 개선</span>
+                      <span>글래스모피즘 디자인 시스템 구축 및 완전 반응형 레이아웃 (모바일/태블릿/데스크톱)</span>
                     </li>
                   </ul>
+                </div>
+
+                {/* 링크 */}
+                <div>
+                  <a
+                    href="https://iliketostudycafe.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`cursor-target inline-flex items-center gap-2 px-4 py-2 ${theme === 'dark' ? 'bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/30' : 'bg-green-100 hover:bg-green-200 text-green-600 border-green-300'} border rounded-lg transition-all transform hover:scale-105`}
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span>라이브 데모 보기</span>
+                  </a>
                 </div>
               </div>
             </div>
