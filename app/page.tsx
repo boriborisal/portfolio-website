@@ -528,10 +528,6 @@ export default function Home() {
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
                       <span>LocalStorage + Firebase 하이브리드 저장으로 오프라인/온라인 환경 모두 지원</span>
                     </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span></span>
-                    </li>
                   </ul>
                 </div>
 
@@ -628,14 +624,6 @@ export default function Home() {
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
                       <span>반응형 디자인: 모바일/태블릿/데스크톱 최적화</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span></span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span></span>
                     </li>
                   </ul>
                 </div>
