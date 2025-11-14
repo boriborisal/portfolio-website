@@ -530,7 +530,7 @@ export default function Home() {
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>글래스모피즘 디자인 시스템 구축 및 완전 반응형 레이아웃 (모바일/태블릿/데스크톱)</span>
+                      <span></span>
                     </li>
                   </ul>
                 </div>
@@ -627,15 +627,15 @@ export default function Home() {
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>완전 반응형 디자인: 모바일/태블릿/데스크톱 최적화</span>
+                      <span>반응형 디자인: 모바일/태블릿/데스크톱 최적화</span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>사용자 피드백 수용하여 모바일 애니메이션 간소화 (UX 개선)</span>
+                      <span></span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>Lighthouse 성능 90+ 달성 (Performance, Accessibility, SEO)</span>
+                      <span></span>
                     </li>
                   </ul>
                 </div>
@@ -707,19 +707,15 @@ export default function Home() {
                   <ul className={`space-y-1 ${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-lg`}>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>팀장: 4명 팀원 9개월 프로젝트 일정 관리 및 협업 조율</span>
+                      <span>팀장: 9개월 프로젝트 일정 관리 및 협업 조율</span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>디자인: Figma로 전체 UI 설계 (50+ 화면), 임산부 10명 인터뷰 통해 니즈 반영</span>
+                      <span>디자인: Figma로 전체 UI 설계 (50+ 화면), SurveyMonkey 설문 통해 니즈 반영</span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
                       <span>개발: Android 프론트엔드 주요 화면 구현 및 API 연동 (60%)</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>성과: Claude Code 및 Cursor 등의 AI 툴로 개발기간 30% 단축 (10주 → 7주)</span>
                     </li>
                     <li className="flex gap-2">
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
@@ -763,7 +759,7 @@ export default function Home() {
          * 2. 학생 창업마라톤 2025 (장려상)
          *    - 서비스: 마마케어 (임산부 헬스케어 앱)
          *    - 역할: 팀장, UI/UX 디자인, 프론트엔드 개발
-         *    - 배운 점: 9개월 프로젝트 리더십, 사용자 인터뷰 기반 UX 개선
+         *    - 배운 점: 9개월 프로젝트 리더십, SurveyMonkey 설문 기반 UX 개선
          *
          * 각 수상은 아이콘, 제목, 날짜, 프로젝트/서비스 설명, 배운 점을 포함합니다.
          */}
@@ -855,7 +851,7 @@ export default function Home() {
 
                       <div>
                         <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1`}>배운 점</h4>
-                        <p className={`${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm pl-6`}>4명 팀 리더로서 9개월 프로젝트 완수. 임산부 10명 직접 인터뷰하여 '글자가 작다', '메뉴가 복잡하다'는 구체적 불편 사항 도출 후, 폰트 120% 확대 및 3탭 구조로 재설계. Notion 기반 투명한 작업 관리와 효율적 협업으로 개발 기간 30% 단축 (10주 → 7주).</p>
+                        <p className={`${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm pl-6`}>팀 리더로서 9개월 프로젝트 완수. SurveyMonkey 설문 통해 '글자가 작다', '메뉴가 복잡하다'는 구체적 불편 사항 도출 후, 폰트 120% 확대 및 3탭 구조로 재설계. Notion 기반 투명한 작업 관리와 효율적 협업 경험.</p>
                       </div>
                     </div>
                   </div>
