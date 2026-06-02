@@ -600,6 +600,23 @@ export default function Home() {
                   </ul>
                 </div>
 
+                {/* 스크린샷 */}
+                <div className="mb-4">
+                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>스크린샷</h4>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    {[1, 2, 3].map((i) => (
+                      <div
+                        key={i}
+                        className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
+                        style={{ aspectRatio: '16/10' }}
+                        onClick={() => setModalImage({ src: `/images/letsmeet-${i}.png`, alt: `Let's Meet in FF14 Screenshot ${i}` })}
+                      >
+                        <Image src={`/images/letsmeet-${i}.png`} alt={`Let's Meet in FF14 Screenshot ${i}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
                 {/* 링크 */}
                 <div className="flex flex-wrap gap-3">
                   <a
