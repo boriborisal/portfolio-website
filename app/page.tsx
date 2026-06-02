@@ -28,7 +28,7 @@
 import { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { Github, Linkedin, Mail, ExternalLink, Code2, Palette, Database, Cpu, Trophy, Calendar, Users, Lightbulb } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Code2, Palette, Database, Cpu, Trophy, Calendar, Users, Lightbulb, ChevronLeft, ChevronRight } from 'lucide-react';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiJavascript, SiHtml5, SiCss3, SiPython, SiFramer, SiGit, SiGithub, SiFigma } from 'react-icons/si';
 
 /**
@@ -139,6 +139,7 @@ export default function Home() {
    * null이면 모달이 닫힌 상태
    */
   const [modalImage, setModalImage] = useState(null);
+  const [talkbridgePage, setTalkbridgePage] = useState(0);
 
   /**
    * theme: 현재 테마 모드
@@ -527,35 +528,49 @@ export default function Home() {
                 </div>
 
                 {/* 스크린샷 */}
-                <div className="mb-4">
-                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>스크린샷</h4>
-                  {/* 첫 6장 그리드 */}
-                  <div className="grid grid-cols-3 sm:grid-cols-6 gap-3 mb-3">
-                    {['01','02','03','04','05','06'].map((n) => (
-                      <div
-                        key={n}
-                        className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
-                        style={{ aspectRatio: '9/16' }}
-                        onClick={() => setModalImage({ src: `/images/talkbridge-${n}.png`, alt: `TalkBridge Screenshot ${n}` })}
-                      >
-                        <Image src={`/images/talkbridge-${n}.png`} alt={`TalkBridge Screenshot ${n}`} fill className="object-cover" sizes="(max-width: 768px) 33vw, 15vw" />
+                {(() => {
+                  const pages = [
+                    ['01','02','03','04','05','06'],
+                    ['07','09','10','12'],
+                  ];
+                  const current = pages[talkbridgePage];
+                  return (
+                    <div className="mb-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold text-lg`}>스크린샷</h4>
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => setTalkbridgePage(0)}
+                            disabled={talkbridgePage === 0}
+                            className={`p-1 rounded-lg border transition-all ${talkbridgePage === 0 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-green-500/20 cursor-pointer'} ${theme === 'dark' ? 'border-green-500/30 text-green-400' : 'border-green-300 text-green-600'}`}
+                          >
+                            <ChevronLeft className="w-4 h-4" />
+                          </button>
+                          <span className={`text-xs ${theme === 'dark' ? 'text-green-400/60' : 'text-gray-500'}`}>{talkbridgePage + 1} / {pages.length}</span>
+                          <button
+                            onClick={() => setTalkbridgePage(1)}
+                            disabled={talkbridgePage === 1}
+                            className={`p-1 rounded-lg border transition-all ${talkbridgePage === 1 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-green-500/20 cursor-pointer'} ${theme === 'dark' ? 'border-green-500/30 text-green-400' : 'border-green-300 text-green-600'}`}
+                          >
+                            <ChevronRight className="w-4 h-4" />
+                          </button>
+                        </div>
                       </div>
-                    ))}
-                  </div>
-                  {/* 나머지 가로 스크롤 */}
-                  <div className="flex gap-3 overflow-x-auto pb-2" style={{ scrollbarWidth: 'thin' }}>
-                    {['07','09','10','12'].map((n) => (
-                      <div
-                        key={n}
-                        className="flex-shrink-0 bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
-                        style={{ width: '120px', aspectRatio: '9/16' }}
-                        onClick={() => setModalImage({ src: `/images/talkbridge-${n}.png`, alt: `TalkBridge Screenshot ${n}` })}
-                      >
-                        <Image src={`/images/talkbridge-${n}.png`} alt={`TalkBridge Screenshot ${n}`} fill className="object-cover" sizes="120px" />
+                      <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
+                        {current.map((n) => (
+                          <div
+                            key={n}
+                            className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
+                            style={{ aspectRatio: '9/16' }}
+                            onClick={() => setModalImage({ src: `/images/talkbridge-${n}.png`, alt: `TalkBridge Screenshot ${n}` })}
+                          >
+                            <Image src={`/images/talkbridge-${n}.png`} alt={`TalkBridge Screenshot ${n}`} fill className="object-cover" sizes="(max-width: 768px) 33vw, 15vw" />
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                </div>
+                    </div>
+                  );
+                })()}
 
                 {/* 링크 */}
                 <div>
