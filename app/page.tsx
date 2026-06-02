@@ -526,6 +526,37 @@ export default function Home() {
                   </ul>
                 </div>
 
+                {/* 스크린샷 */}
+                <div className="mb-4">
+                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>스크린샷</h4>
+                  {/* 첫 6장 그리드 */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-3">
+                    {['01','02','03','04','05','06'].map((n) => (
+                      <div
+                        key={n}
+                        className="bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
+                        style={{ aspectRatio: '16/10' }}
+                        onClick={() => setModalImage({ src: `/images/talkbridge-${n}.png`, alt: `TalkBridge Screenshot ${n}` })}
+                      >
+                        <Image src={`/images/talkbridge-${n}.png`} alt={`TalkBridge Screenshot ${n}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                      </div>
+                    ))}
+                  </div>
+                  {/* 나머지 가로 스크롤 */}
+                  <div className="flex gap-4 overflow-x-auto pb-2" style={{ scrollbarWidth: 'thin' }}>
+                    {['07','09','10','12'].map((n) => (
+                      <div
+                        key={n}
+                        className="flex-shrink-0 bg-gray-700/30 border border-green-500/20 rounded-lg overflow-hidden cursor-pointer hover:border-green-500/40 transition-all relative"
+                        style={{ width: '280px', aspectRatio: '16/10' }}
+                        onClick={() => setModalImage({ src: `/images/talkbridge-${n}.png`, alt: `TalkBridge Screenshot ${n}` })}
+                      >
+                        <Image src={`/images/talkbridge-${n}.png`} alt={`TalkBridge Screenshot ${n}`} fill className="object-cover" sizes="280px" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
                 {/* 링크 */}
                 <div>
                   <a
