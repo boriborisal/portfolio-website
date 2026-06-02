@@ -709,6 +709,14 @@ export default function Home() {
                       <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
                       <span>수상: 학생 창업마라톤 2025 장려상</span>
                     </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>수상: AI 알고리즘 해커톤 경진대회 대상</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>수상: 2025 의료정보과 캡스톤 디자인 대회 대상</span>
+                    </li>
                   </ul>
                 </div>
 
@@ -727,6 +735,164 @@ export default function Home() {
                       </div>
                     ))}
                   </div>
+                </div>
+              </div>
+
+              {/* Project 4: TalkBridge */}
+              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
+                <h3 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-4`}>TalkBridge</h3>
+                <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-base mb-4`}>라즈베리파이 기반 실시간 다국어 채팅 서버</p>
+
+                {/* Info Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-4">
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>타입</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>웹</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>규모</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>개인 프로젝트</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>참여도</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>풀스택 100%</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>디자인 100%</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>기술 스택</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Python / Flask</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Socket.IO</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>DeepL API</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Cloudflare Tunnel</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Raspberry Pi</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>개발 기간</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>2026.03 ~ 2026.05</p>
+                  </div>
+                </div>
+
+                {/* 작업 기여도 */}
+                <div className="mb-4">
+                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>작업 기여도</h4>
+                  <ul className={`space-y-1 ${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-lg`}>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>라즈베리파이에 Flask + Socket.IO 기반 실시간 채팅 서버 직접 구축 및 배포</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>DeepL API 연동으로 21개 언어 실시간 번역, 언어 변경 시 전체 메시지 재번역</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>QR코드 / 6자리 방 코드 입장, 비밀방(호스트 승인/거절) 기능 구현</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>Cloudflare Tunnel로 외부 접속 가능한 URL 자동 발급</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>6종 디자인 테마, 파일 전송(드래그앤드롭), 이미지 인라인 미리보기 구현</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* 링크 */}
+                <div>
+                  <a
+                    href="https://github.com/boriborisal/rasPIchat"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`cursor-target inline-flex items-center gap-2 px-4 py-2 ${theme === 'dark' ? 'bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/30' : 'bg-green-100 hover:bg-green-200 text-green-600 border-green-300'} border rounded-lg transition-all transform hover:scale-105`}
+                  >
+                    <Github className="w-4 h-4" />
+                    <span>GitHub 보기</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Project 5: Let's Meet in FF14 */}
+              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
+                <h3 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-4`}>Let's Meet in FF14</h3>
+                <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-base mb-4`}>FF14 고정 파티원 일정 조율 웹 앱</p>
+
+                {/* Info Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-4">
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>타입</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>웹</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>규모</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>개인 프로젝트</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>참여도</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>풀스택 100%</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>디자인 100%</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>기술 스택</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Next.js / TypeScript</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Tailwind CSS</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Firebase</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Discord OAuth</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>개발 기간</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>2026.04 ~</p>
+                  </div>
+                </div>
+
+                {/* 작업 기여도 */}
+                <div className="mb-4">
+                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>작업 기여도</h4>
+                  <ul className={`space-y-1 ${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-lg`}>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>FF14 고정 파티원 일정 조율 웹앱, when2meet 스타일 30분 단위 시간 그리드</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>Discord OAuth 로그인 + Firebase Firestore 실시간 데이터 동기화</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>8인 백트래킹 매칭 알고리즘으로 출발 가능한 1릴 자동 추출 및 추천</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>공대 생성/초대코드/QR 입장, 멤버 프로필 관리</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>일정 확정 + 출결 관리, 다크/라이트 테마, 모바일 최적화</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* 링크 */}
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href="https://meetattheff14.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`cursor-target inline-flex items-center gap-2 px-4 py-2 ${theme === 'dark' ? 'bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/30' : 'bg-green-100 hover:bg-green-200 text-green-600 border-green-300'} border rounded-lg transition-all transform hover:scale-105`}
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span>라이브 데모 보기</span>
+                  </a>
+                  <a
+                    href="https://github.com/boriborisal/letsmeetinff14"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`cursor-target inline-flex items-center gap-2 px-4 py-2 ${theme === 'dark' ? 'bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/30' : 'bg-green-100 hover:bg-green-200 text-green-600 border-green-300'} border rounded-lg transition-all transform hover:scale-105`}
+                  >
+                    <Github className="w-4 h-4" />
+                    <span>GitHub 보기</span>
+                  </a>
                 </div>
               </div>
 
@@ -840,6 +1006,86 @@ export default function Home() {
                       <div>
                         <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1`}>배운 점</h4>
                         <p className={`${theme === 'dark' ? 'text-green-200/70' : 'text-gray-900'} text-sm pl-6`}>팀 리더로서 9개월 프로젝트 완수. SurveyMonkey 설문 통해 '글자가 작다', '메뉴가 복잡하다'는 구체적 불편 사항 도출 후, 폰트 120% 확대 및 3탭 구조로 재설계. Notion 기반 투명한 작업 관리와 효율적 협업 경험.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Award 3: AI 알고리즘 해커톤 경진대회 */}
+              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
+                <div className="flex items-start gap-4">
+                  <div className={`flex-shrink-0 w-12 h-12 ${theme === 'dark' ? 'bg-green-500/10' : 'bg-green-100'} rounded-lg flex items-center justify-center`}>
+                    <Trophy className={`w-6 h-6 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+                      <h3 className={`text-xl sm:text-2xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>AI 알고리즘 해커톤 경진대회</h3>
+                      <span className={`${theme === 'dark' ? 'text-green-400/60' : 'text-green-500'} text-sm mt-1 sm:mt-0`}>대상</span>
+                    </div>
+
+                    <div className={`flex items-center gap-2 ${theme === 'dark' ? 'text-green-300/70' : 'text-gray-900'} text-sm mb-4`}>
+                      <Calendar className="w-4 h-4" />
+                      <span>2025.11.26</span>
+                      <span className={theme === 'dark' ? 'text-green-400/40' : 'text-gray-500'}>•</span>
+                      <span>삼육보건대학교 주최</span>
+                    </div>
+
+                    <div className="space-y-3">
+                      <div>
+                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 flex items-center gap-2`}>
+                          <Lightbulb className="w-4 h-4" />
+                          프로젝트
+                        </h4>
+                        <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} pl-6`}>마마케어 — 임산부 스마트워치 기반 헬스케어 모니터링 앱</p>
+                      </div>
+
+                      <div>
+                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 flex items-center gap-2`}>
+                          <Users className="w-4 h-4" />
+                          역할
+                        </h4>
+                        <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} pl-6`}>팀장, 프론트엔드 개발</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Award 4: 2025 의료정보과 캡스톤 디자인 대회 */}
+              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
+                <div className="flex items-start gap-4">
+                  <div className={`flex-shrink-0 w-12 h-12 ${theme === 'dark' ? 'bg-green-500/10' : 'bg-green-100'} rounded-lg flex items-center justify-center`}>
+                    <Trophy className={`w-6 h-6 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+                      <h3 className={`text-xl sm:text-2xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>2025 의료정보과 캡스톤 디자인 대회</h3>
+                      <span className={`${theme === 'dark' ? 'text-green-400/60' : 'text-green-500'} text-sm mt-1 sm:mt-0`}>대상</span>
+                    </div>
+
+                    <div className={`flex items-center gap-2 ${theme === 'dark' ? 'text-green-300/70' : 'text-gray-900'} text-sm mb-4`}>
+                      <Calendar className="w-4 h-4" />
+                      <span>2025.12.11</span>
+                      <span className={theme === 'dark' ? 'text-green-400/40' : 'text-gray-500'}>•</span>
+                      <span>삼육보건대학교 주최</span>
+                    </div>
+
+                    <div className="space-y-3">
+                      <div>
+                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 flex items-center gap-2`}>
+                          <Lightbulb className="w-4 h-4" />
+                          프로젝트
+                        </h4>
+                        <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} pl-6`}>마마케어 — 임산부를 위한 맞춤형 헬스케어 어플리케이션</p>
+                      </div>
+
+                      <div>
+                        <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 flex items-center gap-2`}>
+                          <Users className="w-4 h-4" />
+                          역할
+                        </h4>
+                        <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} pl-6`}>팀장, UI/UX 디자인, 프론트엔드 개발</p>
                       </div>
                     </div>
                   </div>
@@ -1011,7 +1257,7 @@ export default function Home() {
               </div>
 
               <p className="text-green-500/60 text-sm">
-                © 2024 Park Soeun. Made with <span className="text-green-400">❤</span>
+                © 2026 Park Soeun. Made with <span className="text-green-400">❤</span>
               </p>
             </div>
           </div>
