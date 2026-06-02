@@ -465,7 +465,165 @@ export default function Home() {
             </h2>
 
             <div className="space-y-6">
-              {/* Project 1: Cafe Flow */}
+              {/* Project 1: TalkBridge */}
+              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
+                <h3 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-4`}>TalkBridge</h3>
+                <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-base mb-4`}>라즈베리파이 기반 실시간 다국어 채팅 서버</p>
+
+                {/* Info Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-4">
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>타입</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>웹</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>규모</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>개인 프로젝트</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>참여도</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>풀스택 100%</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>디자인 100%</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>기술 스택</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Python / Flask</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Socket.IO</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>DeepL API</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Cloudflare Tunnel</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Raspberry Pi</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>개발 기간</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>2026.03 ~ 2026.05</p>
+                  </div>
+                </div>
+
+                {/* 작업 기여도 */}
+                <div className="mb-4">
+                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>작업 기여도</h4>
+                  <ul className={`space-y-1 ${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-lg`}>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>라즈베리파이에 Flask + Socket.IO 기반 실시간 채팅 서버 직접 구축 및 배포</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>DeepL API 연동으로 21개 언어 실시간 번역, 언어 변경 시 전체 메시지 재번역</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>QR코드 / 6자리 방 코드 입장, 비밀방(호스트 승인/거절) 기능 구현</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>Cloudflare Tunnel로 외부 접속 가능한 URL 자동 발급</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>6종 디자인 테마, 파일 전송(드래그앤드롭), 이미지 인라인 미리보기 구현</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* 링크 */}
+                <div>
+                  <a
+                    href="https://github.com/boriborisal/rasPIchat"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`cursor-target inline-flex items-center gap-2 px-4 py-2 ${theme === 'dark' ? 'bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/30' : 'bg-green-100 hover:bg-green-200 text-green-600 border-green-300'} border rounded-lg transition-all transform hover:scale-105`}
+                  >
+                    <Github className="w-4 h-4" />
+                    <span>GitHub 보기</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Project 2: Let's Meet in FF14 */}
+              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
+                <h3 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-4`}>Let's Meet in FF14</h3>
+                <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-base mb-4`}>FF14 고정 파티원 일정 조율 웹 앱</p>
+
+                {/* Info Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-4">
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>타입</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>웹</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>규모</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>개인 프로젝트</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>참여도</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>풀스택 100%</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>디자인 100%</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>기술 스택</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Next.js / TypeScript</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Tailwind CSS</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Firebase</p>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Discord OAuth</p>
+                  </div>
+                  <div>
+                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>개발 기간</h4>
+                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>2026.04 ~</p>
+                  </div>
+                </div>
+
+                {/* 작업 기여도 */}
+                <div className="mb-4">
+                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>작업 기여도</h4>
+                  <ul className={`space-y-1 ${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-lg`}>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>FF14 고정 파티원 일정 조율 웹앱, when2meet 스타일 30분 단위 시간 그리드</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>Discord OAuth 로그인 + Firebase Firestore 실시간 데이터 동기화</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>8인 백트래킹 매칭 알고리즘으로 출발 가능한 1릴 자동 추출 및 추천</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>공대 생성/초대코드/QR 입장, 멤버 프로필 관리</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
+                      <span>일정 확정 + 출결 관리, 다크/라이트 테마, 모바일 최적화</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* 링크 */}
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href="https://letsmeetinff14.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`cursor-target inline-flex items-center gap-2 px-4 py-2 ${theme === 'dark' ? 'bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/30' : 'bg-green-100 hover:bg-green-200 text-green-600 border-green-300'} border rounded-lg transition-all transform hover:scale-105`}
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span>라이브 데모 보기</span>
+                  </a>
+                  <a
+                    href="https://github.com/boriborisal/letsmeetinff14"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`cursor-target inline-flex items-center gap-2 px-4 py-2 ${theme === 'dark' ? 'bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/30' : 'bg-green-100 hover:bg-green-200 text-green-600 border-green-300'} border rounded-lg transition-all transform hover:scale-105`}
+                  >
+                    <Github className="w-4 h-4" />
+                    <span>GitHub 보기</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Project 3: Cafe Flow */}
               <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
                 <h3 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-4`}>Cafe Flow</h3>
                 <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-base mb-4`}>올인원 집중 관리 웹 애플리케이션</p>
@@ -738,163 +896,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Project 4: TalkBridge */}
-              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
-                <h3 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-4`}>TalkBridge</h3>
-                <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-base mb-4`}>라즈베리파이 기반 실시간 다국어 채팅 서버</p>
-
-                {/* Info Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-4">
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>타입</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>웹</p>
-                  </div>
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>규모</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>개인 프로젝트</p>
-                  </div>
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>참여도</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>풀스택 100%</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>디자인 100%</p>
-                  </div>
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>기술 스택</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Python / Flask</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Socket.IO</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>DeepL API</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Cloudflare Tunnel</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Raspberry Pi</p>
-                  </div>
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>개발 기간</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>2026.03 ~ 2026.05</p>
-                  </div>
-                </div>
-
-                {/* 작업 기여도 */}
-                <div className="mb-4">
-                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>작업 기여도</h4>
-                  <ul className={`space-y-1 ${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-lg`}>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>라즈베리파이에 Flask + Socket.IO 기반 실시간 채팅 서버 직접 구축 및 배포</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>DeepL API 연동으로 21개 언어 실시간 번역, 언어 변경 시 전체 메시지 재번역</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>QR코드 / 6자리 방 코드 입장, 비밀방(호스트 승인/거절) 기능 구현</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>Cloudflare Tunnel로 외부 접속 가능한 URL 자동 발급</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>6종 디자인 테마, 파일 전송(드래그앤드롭), 이미지 인라인 미리보기 구현</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* 링크 */}
-                <div>
-                  <a
-                    href="https://github.com/boriborisal/rasPIchat"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`cursor-target inline-flex items-center gap-2 px-4 py-2 ${theme === 'dark' ? 'bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/30' : 'bg-green-100 hover:bg-green-200 text-green-600 border-green-300'} border rounded-lg transition-all transform hover:scale-105`}
-                  >
-                    <Github className="w-4 h-4" />
-                    <span>GitHub 보기</span>
-                  </a>
-                </div>
-              </div>
-
-              {/* Project 5: Let's Meet in FF14 */}
-              <div className={`cursor-target ${theme === 'dark' ? 'bg-black/40 border-green-500/20 hover:border-green-500/40' : 'bg-white border-gray-300 hover:border-gray-400'} backdrop-blur-sm border rounded-xl p-6 sm:p-8 transition-all`}>
-                <h3 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-500'} mb-4`}>Let's Meet in FF14</h3>
-                <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-base mb-4`}>FF14 고정 파티원 일정 조율 웹 앱</p>
-
-                {/* Info Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-4">
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>타입</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>웹</p>
-                  </div>
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>규모</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>개인 프로젝트</p>
-                  </div>
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>참여도</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>풀스택 100%</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>디자인 100%</p>
-                  </div>
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>기술 스택</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Next.js / TypeScript</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Tailwind CSS</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Firebase</p>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>Discord OAuth</p>
-                  </div>
-                  <div>
-                    <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-1 text-base`}>개발 기간</h4>
-                    <p className={`${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-sm leading-tight`}>2026.04 ~</p>
-                  </div>
-                </div>
-
-                {/* 작업 기여도 */}
-                <div className="mb-4">
-                  <h4 className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'} font-semibold mb-2 text-lg`}>작업 기여도</h4>
-                  <ul className={`space-y-1 ${theme === 'dark' ? 'text-green-200/80' : 'text-gray-900'} text-lg`}>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>FF14 고정 파티원 일정 조율 웹앱, when2meet 스타일 30분 단위 시간 그리드</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>Discord OAuth 로그인 + Firebase Firestore 실시간 데이터 동기화</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>8인 백트래킹 매칭 알고리즘으로 출발 가능한 1릴 자동 추출 및 추천</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>공대 생성/초대코드/QR 입장, 멤버 프로필 관리</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className={`${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`}>•</span>
-                      <span>일정 확정 + 출결 관리, 다크/라이트 테마, 모바일 최적화</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* 링크 */}
-                <div className="flex flex-wrap gap-3">
-                  <a
-                    href="https://meetattheff14.vercel.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`cursor-target inline-flex items-center gap-2 px-4 py-2 ${theme === 'dark' ? 'bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/30' : 'bg-green-100 hover:bg-green-200 text-green-600 border-green-300'} border rounded-lg transition-all transform hover:scale-105`}
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    <span>라이브 데모 보기</span>
-                  </a>
-                  <a
-                    href="https://github.com/boriborisal/letsmeetinff14"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`cursor-target inline-flex items-center gap-2 px-4 py-2 ${theme === 'dark' ? 'bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/30' : 'bg-green-100 hover:bg-green-200 text-green-600 border-green-300'} border rounded-lg transition-all transform hover:scale-105`}
-                  >
-                    <Github className="w-4 h-4" />
-                    <span>GitHub 보기</span>
-                  </a>
-                </div>
-              </div>
 
             </div>
           </div>
