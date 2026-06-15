@@ -573,7 +573,16 @@ export default function Home() {
                 })()}
 
                 {/* 링크 */}
-                <div>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href="https://raspichat-production.up.railway.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`cursor-target inline-flex items-center gap-2 px-4 py-2 ${theme === 'dark' ? 'bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/30' : 'bg-green-100 hover:bg-green-200 text-green-600 border-green-300'} border rounded-lg transition-all transform hover:scale-105`}
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span>라이브 데모 보기</span>
+                  </a>
                   <a
                     href="https://github.com/boriborisal/rasPIchat"
                     target="_blank"
