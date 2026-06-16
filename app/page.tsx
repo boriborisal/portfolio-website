@@ -316,8 +316,8 @@ export default function Home() {
 
         {/* Hero 콘텐츠 (배경 위에 표시, z-10) */}
         <div className="relative z-10 w-full">
-          <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 overflow-hidden">
-            <div className="grid lg:grid-cols-2 gap-0 items-center py-16 lg:py-0">
+          <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
+            <div className="grid lg:grid-cols-2 gap-0 items-center">
 
               {/**
                * 왼쪽: 인사말 텍스트
@@ -361,8 +361,7 @@ export default function Home() {
                * 각 카드는 터미널 스타일 헤더를 가지며,
                * 5초마다 자동으로 순환합니다 (delay: 5000ms)
                */}
-              <div className="flex justify-center mt-4 lg:mt-0 lg:justify-end" style={{ marginRight: '50px' }}>
-                <div className="shrink-0 scale-[0.48] sm:scale-[0.65] lg:scale-100 origin-top -mb-[260px] sm:-mb-[175px] lg:mb-0">
+              <div className="hidden lg:flex justify-end" style={{ marginRight: '50px' }}>
                 <CardSwap
                   width={650}
                   height={500}
@@ -426,7 +425,6 @@ export default function Home() {
                     </div>
                   </Card>
                 </CardSwap>
-                </div>
               </div>
             </div>
           </div>
