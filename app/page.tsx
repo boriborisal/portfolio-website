@@ -327,7 +327,7 @@ export default function Home() {
                * - "I'm FrontEnd Developer"
                * - "Park Soeun" (다크 모드: 노란색, 라이트 모드: 녹색)
                */}
-              <div className="space-y-6" style={{ marginLeft: '20px' }}>
+              <div className="space-y-6 text-center lg:text-left px-4 lg:px-0 lg:ml-5">
                 <h1 className={`text-[58px] sm:text-[70px] lg:text-[82px] font-black ${theme === 'dark' ? 'text-white' : 'text-gray-900'} leading-tight`}>
                   Hello,
                   {/* 타이핑 효과: world, HTML, React, JS, FE가 순환 */}
@@ -361,7 +361,7 @@ export default function Home() {
                * 각 카드는 터미널 스타일 헤더를 가지며,
                * 5초마다 자동으로 순환합니다 (delay: 5000ms)
                */}
-              <div className="flex justify-center lg:justify-end" style={{ marginLeft: '-150px', marginRight: '50px' }}>
+              <div className="hidden lg:flex justify-end" style={{ marginRight: '50px' }}>
                 <CardSwap
                   width={650}
                   height={500}
